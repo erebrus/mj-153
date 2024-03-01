@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=11 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
 [ext_resource type="Texture2D" uid="uid://k25tg0sgp3q3" path="res://assets/gfx/character/character1.png" id="2_dn0nu"]
@@ -9,22 +9,6 @@ friction = 0.16
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smb2s"]
 radius = 4.0
-
-[sub_resource type="Animation" id="Animation_n4jjt"]
-resource_name = "Thrust"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ThrustSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
 
 [sub_resource type="Animation" id="Animation_hccn5"]
 length = 0.001
@@ -40,11 +24,110 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrustSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mns11"]
+resource_name = "thrust_start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrustSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0hv1i"]
+resource_name = "thrust_stop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrustSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 3.03143),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n4jjt"]
+resource_name = "thrust"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrustSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c6ct"]
 _data = {
 "RESET": SubResource("Animation_hccn5"),
-"Thrust": SubResource("Animation_n4jjt")
+"thrust": SubResource("Animation_n4jjt"),
+"thrust_start": SubResource("Animation_mns11"),
+"thrust_stop": SubResource("Animation_0hv1i")
 }
 
 [node name="Player" type="RigidBody2D"]
@@ -57,12 +140,14 @@ script = ExtResource("1_lmvmc")
 shape = SubResource("CircleShape2D_smb2s")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+rotation = -1.5708
 texture = ExtResource("2_dn0nu")
 offset = Vector2(-0.5, -4)
 
 [node name="ThrustSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(0, 12)
+position = Vector2(12, 0)
+rotation = -1.5708
 texture = ExtResource("3_1lcc6")
 offset = Vector2(-0.5, 0)
 hframes = 11

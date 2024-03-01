@@ -18,8 +18,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer"]
-position = Vector2(329, 190)
+position = Vector2(29, 36)
 polygon = PackedVector2Array(23, 3, 120, 3, 108, 42)
 
 [node name="Player" parent="CanvasLayer" instance=ExtResource("2_5jl7c")]
-position = Vector2(578.8, 343.4)
+position = Vector2(219, 115)
