@@ -1,12 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=9 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
+[ext_resource type="Texture2D" uid="uid://k25tg0sgp3q3" path="res://assets/gfx/character/character1.png" id="2_dn0nu"]
+[ext_resource type="Texture2D" uid="uid://q8w2hmq8ha42" path="res://assets/gfx/character/thrust.png" id="3_1lcc6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spm34"]
 friction = 0.16
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smb2s"]
-radius = 8.0
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_n4jjt"]
+resource_name = "Thrust"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_hccn5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c6ct"]
+_data = {
+"RESET": SubResource("Animation_hccn5"),
+"Thrust": SubResource("Animation_n4jjt")
+}
 
 [node name="Player" type="RigidBody2D"]
 mass = 80.0
@@ -14,8 +53,21 @@ physics_material_override = SubResource("PhysicsMaterial_spm34")
 gravity_scale = 0.0
 script = ExtResource("1_lmvmc")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_smb2s")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_dn0nu")
+offset = Vector2(-0.5, -4)
+
+[node name="ThrustSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 12)
+texture = ExtResource("3_1lcc6")
+offset = Vector2(-0.5, 0)
+hframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8c6ct")
+}

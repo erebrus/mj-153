@@ -1,4 +1,5 @@
 extends Node
 
-signal thrust_requested(target:Vector2)
+signal thrust_requested()
+signal thrust_stopped()
 signal shoot_requested(target:Vector2)

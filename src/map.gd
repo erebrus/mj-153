@@ -21,4 +21,8 @@ func _input(event):
 				Events.shoot_requested.emit(pos)				
 			elif event.button_index == MOUSE_BUTTON_RIGHT:
 				Logger.info("Requested thrust pos %s" % pos)
-				Events.thrust_requested.emit(pos)	
+				Events.thrust_requested.emit()	
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+				Logger.info("Requested thrust stop " )
+				Events.thrust_stopped.emit()	
+			
