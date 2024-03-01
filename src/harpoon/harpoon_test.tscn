@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dllyym0lp6ejn"]
+
+[ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="1_lwf3o"]
+
+[node name="HarpoonTest" type="Node2D"]
+
+[node name="Harpoon" parent="." instance=ExtResource("1_lwf3o")]
+position = Vector2(64, 47)

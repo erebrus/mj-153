@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://qdwvba2hm0uv"]
+
+[ext_resource type="Script" path="res://src/harpoon/harpoon.gd" id="1_6a5wj"]
+[ext_resource type="Texture2D" uid="uid://6q11af3awwof" path="res://src/harpoon/harpoon.png" id="2_xm335"]
+[ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_1okr1"]
+[ext_resource type="Script" path="res://src/harpoon/states/idle.gd" id="4_tsqr3"]
+[ext_resource type="Script" path="res://src/harpoon/states/shooting.gd" id="5_eoxbe"]
+[ext_resource type="Script" path="res://src/harpoon/states/reeling.gd" id="6_84dxg"]
+
+[node name="Harpoon" type="Node2D"]
+script = ExtResource("1_6a5wj")
+rope_amplitude = 6.0
+rope_period = 15.0
+
+[node name="ArrowHead" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowHead"]
+texture_filter = 1
+position = Vector2(3, 0)
+rotation = 1.5708
+texture = ExtResource("2_xm335")
+
+[node name="Rope" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(1, 0.584314, 0.211765, 1)
+
+[node name="Start" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="State" type="Node" parent="."]
+script = ExtResource("3_1okr1")
+history_size = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("..")
+timed = false
+next_state = NodePath("")
+
+[node name="Idle" type="Node" parent="State"]
+script = ExtResource("4_tsqr3")
+
+[node name="Shooting" type="Node" parent="State"]
+script = ExtResource("5_eoxbe")
+
+[node name="Reeling" type="Node" parent="State"]
+script = ExtResource("6_84dxg")
