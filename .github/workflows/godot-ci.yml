@@ -2,10 +2,10 @@ name: "godot-ci export"
 on:
   push:
     branches:
-      - main
+      - release
 
 env:
-  GODOT_VERSION: 4.2
+  GODOT_VERSION: 4.2.1
   EXPORT_NAME: mj153
   ITCH_GAME: minijam-153
   ITCH_USER: erebrus
@@ -15,7 +15,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:4.2
+      image: barichello/godot-ci:4.2.1
     steps:
     - name: Checkout
       uses: actions/checkout@v2
