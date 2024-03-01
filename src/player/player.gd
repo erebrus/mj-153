@@ -17,6 +17,7 @@ func _ready():
 	Events.thrust_requested.connect(_on_thrust_requested)
 	Events.thrust_stopped.connect(_on_thrust_stopped)
 	Events.shoot_requested.connect(_on_shoot_requested)
+	_on_timer_timeout()
 
 func _on_shoot_requested(pos:Vector2):
 	Logger.info("%s received shoot request pos %s" % [name, pos])
@@ -78,5 +79,6 @@ func _input(event):
 			elif thrust_on and not m_event.pressed:
 				_stop_thrust()
 
-		
-	
+
+func _on_timer_timeout():
+	Events.player_position_updated.emit(global_position)
