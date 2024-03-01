@@ -11,7 +11,6 @@ class_name Harpoon extends Node2D
 
 var rope_points: Array[Vector2]
 
-
 @onready var arrow = $ArrowHead
 @onready var rope = $Rope
 @onready var state_machine = $State

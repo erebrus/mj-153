@@ -1,13 +1,13 @@
-extends State
-
-var arrow: Area2D
+extends "res://src/harpoon/states/moving.gd"
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
-func _on_enter(_args) -> void:
+func _on_enter(args) -> void:
 	Logger.debug("reeling")
-	arrow = target.arrow
+	super._on_enter(args)
+	if args != null:
+		captured = args
 	
 
 # This function is called each frame if the state is ACTIVE
@@ -18,7 +18,12 @@ func _on_update(delta: float) -> void:
 	
 	if (distance < pow(movement,2)):
 		arrow.position = Vector2.ZERO
+		for fish in captured:
+			fish.capture()
+		
 		change_state("Idle")
 		return
 	
 	arrow.position -= Vector2(movement, 0)
+	
+	super._on_update(delta)

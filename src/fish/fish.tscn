@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://mxame0kmrswl"]
+[gd_scene load_steps=13 format=3 uid="uid://mxame0kmrswl"]
 
 [ext_resource type="Texture2D" uid="uid://wri20djcerpq" path="res://src/fish/fish1.png" id="1_v2h0i"]
+[ext_resource type="Script" path="res://src/fish/fish.gd" id="1_vq1q5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2h73t"]
 atlas = ExtResource("1_v2h0i")
@@ -72,6 +73,7 @@ height = 14.0
 
 [node name="Fish" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_vq1q5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7m4q2")
