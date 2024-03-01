@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ndrbm68pe1c0"]
+
+[ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
+[ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_v8gei")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer"]
+position = Vector2(329, 190)
+polygon = PackedVector2Array(23, 3, 120, 3, 108, 42)
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource("2_5jl7c")]
+position = Vector2(578.8, 343.4)
