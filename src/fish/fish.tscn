@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://mxame0kmrswl"]
+
+[ext_resource type="Texture2D" uid="uid://wri20djcerpq" path="res://src/fish/fish1.png" id="1_v2h0i"]
+[ext_resource type="Script" path="res://src/fish/fish.gd" id="1_vq1q5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h73t"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3nep"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hond"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5rl0"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7njdy"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7bp5"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdeoc"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7me5j"]
+atlas = ExtResource("1_v2h0i")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m4q2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h73t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3nep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hond")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5rl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7njdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7bp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdeoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7me5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m80h3"]
+radius = 5.0
+height = 14.0
+
+[node name="Fish" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_vq1q5")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7m4q2")
+autoplay = "default"
+frame_progress = 0.0863134
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_m80h3")

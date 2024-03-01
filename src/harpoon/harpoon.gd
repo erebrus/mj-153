@@ -11,15 +11,10 @@ class_name Harpoon extends Node2D
 
 var rope_points: Array[Vector2]
 
-
 @onready var arrow = $ArrowHead
 @onready var rope = $Rope
 @onready var state_machine = $State
 
-
-func _ready() -> void:
-	pass
-	
 
 func _draw() -> void:
 	if (rope.visible):
@@ -28,7 +23,6 @@ func _draw() -> void:
 	var color = rope.default_color
 	for point in rope_points:
 		draw_line(Vector2(point.x - 0.5, point.y - 0.5), Vector2(point.x + 0.5, point.y + 0.5), color)
-	
 	
 
 func _physics_process(_delta: float) -> void:
