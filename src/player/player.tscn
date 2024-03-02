@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=15 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
-[ext_resource type="Texture2D" uid="uid://k25tg0sgp3q3" path="res://assets/gfx/character/character1.png" id="2_dn0nu"]
+[ext_resource type="Texture2D" uid="uid://2cqfs8fb6d6b" path="res://assets/gfx/character/character.png" id="2_x428q"]
 [ext_resource type="Texture2D" uid="uid://q8w2hmq8ha42" path="res://assets/gfx/character/thrust.png" id="3_1lcc6"]
+[ext_resource type="AudioStream" uid="uid://0n2ww1v2rrpd" path="res://assets/sfx/trust_loop.wav" id="4_ch5g3"]
 [ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="4_snvsl"]
+[ext_resource type="AudioStream" uid="uid://cxa3ti8cdbych" path="res://assets/sfx/trust_start.wav" id="5_j0mh5"]
+[ext_resource type="AudioStream" uid="uid://cty2047sk2eft" path="res://assets/sfx/trust_end.wav" id="6_squ50"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spm34"]
 friction = 0.16
@@ -66,6 +69,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ThrustSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_ch5g3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mns11"]
 resource_name = "thrust_start"
@@ -94,6 +112,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ThrustSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_j0mh5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0hv1i"]
 resource_name = "thrust_stop"
@@ -122,6 +155,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ThrustSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_squ50")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c6ct"]
 _data = {
@@ -136,21 +184,50 @@ mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_spm34")
 gravity_scale = 0.0
 script = ExtResource("1_lmvmc")
+impulse_force = 50000.0
+shoot_impulse_force = 1000.0
+
+[node name="RotationGuide" type="Node2D" parent="."]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="RotationGuide"]
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="RotationGuide"]
+rotation = 0.785398
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="RotationGuide"]
+rotation = 1.5708
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D4" type="Line2D" parent="RotationGuide"]
+rotation = 2.35619
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_smb2s")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = -1.5708
-texture = ExtResource("2_dn0nu")
-offset = Vector2(-0.5, -4)
+texture = ExtResource("2_x428q")
+offset = Vector2(0, -4)
+hframes = 3
 
 [node name="ThrustSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(12, 0)
 rotation = -1.5708
 texture = ExtResource("3_1lcc6")
-offset = Vector2(-0.5, 0)
 hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -165,5 +242,7 @@ autostart = true
 [node name="Harpoon" parent="." instance=ExtResource("4_snvsl")]
 position = Vector2(-5, -2)
 rotation = 3.14159
+
+[node name="ThrustSound" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

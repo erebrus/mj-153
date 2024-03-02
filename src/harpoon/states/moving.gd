@@ -12,6 +12,8 @@ func _on_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(delta: float) -> void:
+	target.global_rotation = 0
+	arrow.global_rotation = target.global_position.angle_to_point(arrow.global_position)
 	move_captures()
 	
 

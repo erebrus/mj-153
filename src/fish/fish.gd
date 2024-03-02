@@ -8,6 +8,7 @@ const MAX_PLAYER_DISTANCE:=400.0
 
 
 @onready var sprite = $Sprite
+@onready var sound = $HitSound
 @onready var reaction_timer = $ReactionTimer
 var last_player_position:Vector2 
 
@@ -31,6 +32,7 @@ func _physics_process(delta):
 
 func spear() -> void:
 	Logger.debug("fish speared")
+	sound.play()
 	sprite.stop()
 	
 

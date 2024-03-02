@@ -35,6 +35,7 @@ func _calculate_rope() -> Array[Vector2]:
 	var first_point = Vector2.ZERO
 	var last_point = arrow.position
 	var distance = first_point.distance_to(last_point)
+	var direction = first_point.angle_to_point(last_point)
 	
 	var max_waves = distance / PI
 	var desired_waves = int(distance / rope_period)
@@ -47,7 +48,7 @@ func _calculate_rope() -> Array[Vector2]:
 	var points:Array[Vector2] = [first_point]
 	var current = rope_step
 	while current < distance:
-		var point = Vector2(int(current), int(amplitude * sin(current * factor)))
+		var point = Vector2(int(current), int(amplitude * sin(current * factor))).rotated(direction)
 		points.append(point)
 		current += rope_step
 		
