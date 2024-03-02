@@ -11,6 +11,8 @@ var thrust_on:bool = false
 var target_angle:float
 
 @onready var animation_player = $AnimationPlayer
+@onready var sprite = $Sprite
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,6 +49,9 @@ func _physics_process(delta):
 	if thrust_on:
 		var impulse = Vector2.RIGHT.rotated(rotation)*-impulse_force
 		apply_force(impulse)
+	
+	var discrete_rotation = PI / 2 * (round(rotation / (PI / 2))) - PI / 2
+	sprite.rotation = -rotation + discrete_rotation
 	
 func _set_target_angle():
 	var pos = get_global_mouse_position()
