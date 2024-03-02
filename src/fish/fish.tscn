@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dm45gdvvnrf7h"]
+[gd_scene load_steps=14 format=3 uid="uid://dm45gdvvnrf7h"]
 
 [ext_resource type="Script" path="res://src/fish/fish.gd" id="1_vq1q5"]
 [ext_resource type="Texture2D" uid="uid://dmpgxntujd1u3" path="res://assets/gfx/fishes/fish.png" id="2_8pchg"]
+[ext_resource type="AudioStream" uid="uid://b5tan3qb8666k" path="res://assets/sfx/harpoon_impact_2.wav" id="3_u52r2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p23d7"]
 atlas = ExtResource("2_8pchg")
@@ -94,6 +95,9 @@ shape = SubResource("CircleShape2D_6wus7")
 [node name="ReactionTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u52r2")
 
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
