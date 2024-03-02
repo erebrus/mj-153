@@ -40,6 +40,7 @@ func _on_thrust_requested():
 	thrust_on = true
 	
 	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if angle_difference(rotation, target_angle) < PI/60:
@@ -50,9 +51,24 @@ func _physics_process(delta):
 		var impulse = Vector2.RIGHT.rotated(rotation)*-impulse_force
 		apply_force(impulse)
 	
-	var discrete_rotation = PI / 2 * (round(rotation / (PI / 2))) - PI / 2
-	sprite.rotation = -rotation + discrete_rotation
+	_rotate_sprite()
 	
+
+func _rotate_sprite() -> void:
+	var discrete_rotation = _force_angle_precision(rotation - PI / 4 - PI / 8, PI/2)
+	var discrete_rotation_half = _force_angle_precision(rotation - PI / 2, PI/4)
+	
+	var frame_num = posmod(discrete_rotation_half / (PI / 4), 2)
+	sprite.frame = frame_num * 2
+	
+	sprite.rotation = -rotation + discrete_rotation
+	$RotationGuide.rotation = -rotation
+	
+
+func _force_angle_precision(angle: float, precision: float) -> float:
+	return precision * round(angle / precision)
+	
+
 func _set_target_angle():
 	var pos = get_global_mouse_position()
 	target_angle = pos.angle_to_point(global_position)

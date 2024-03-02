@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
-[ext_resource type="Texture2D" uid="uid://k25tg0sgp3q3" path="res://assets/gfx/character/character1.png" id="2_dn0nu"]
+[ext_resource type="Texture2D" uid="uid://2cqfs8fb6d6b" path="res://assets/gfx/character/character.png" id="2_x428q"]
 [ext_resource type="Texture2D" uid="uid://q8w2hmq8ha42" path="res://assets/gfx/character/thrust.png" id="3_1lcc6"]
 [ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="4_snvsl"]
 
@@ -137,20 +137,47 @@ physics_material_override = SubResource("PhysicsMaterial_spm34")
 gravity_scale = 0.0
 script = ExtResource("1_lmvmc")
 
+[node name="RotationGuide" type="Node2D" parent="."]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="RotationGuide"]
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D2" type="Line2D" parent="RotationGuide"]
+rotation = 0.785398
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D3" type="Line2D" parent="RotationGuide"]
+rotation = 1.5708
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
+[node name="Line2D4" type="Line2D" parent="RotationGuide"]
+rotation = 2.35619
+points = PackedVector2Array(100, 100, -100, -100)
+width = 2.0
+default_color = Color(0.0196078, 0.439216, 1, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_smb2s")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = -1.5708
-texture = ExtResource("2_dn0nu")
-offset = Vector2(-0.5, -4)
+texture = ExtResource("2_x428q")
+offset = Vector2(0, -4)
+hframes = 3
 
 [node name="ThrustSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(12, 0)
 rotation = -1.5708
 texture = ExtResource("3_1lcc6")
-offset = Vector2(-0.5, 0)
 hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
