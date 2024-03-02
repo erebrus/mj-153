@@ -44,9 +44,9 @@ shoot={
 
 [layer_names]
 
-2d_physics/layer_1="world"
+2d_physics/layer_1="player"
 2d_physics/layer_2="harpoonable"
-2d_physics/layer_3="enemies"
+2d_physics/layer_3="world"
 2d_physics/layer_4="harpoon"
 
 [rendering]

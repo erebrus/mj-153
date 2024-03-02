@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=12 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ccd5bop2rwmut" path="res://src/fish/jelly.tscn" id="4_l8o1u"]
 [ext_resource type="PackedScene" uid="uid://b8t4eym2lviwc" path="res://src/fish/shell.tscn" id="5_eiwmb"]
 [ext_resource type="PackedScene" uid="uid://b1oi61f76o55i" path="res://src/fish/little_fish.tscn" id="6_pti2r"]
+[ext_resource type="Texture2D" uid="uid://curqeyhkdg4fc" path="res://assets/gfx/bg/background-galaxy.png" id="7_v0qth"]
+[ext_resource type="Texture2D" uid="uid://dkd3j7qqv3pjl" path="res://assets/gfx/bg/stars-back.png" id="8_s75n7"]
+[ext_resource type="Texture2D" uid="uid://ie5ryj4xpd7j" path="res://assets/gfx/bg/stars-mid.png" id="9_0dsg2"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_v8gei")
@@ -16,13 +19,28 @@ fish_scenes = Array[PackedScene]([ExtResource("2_ufj0h"), ExtResource("3_a6h2c")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="BG" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("7_v0qth")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="StarsBack" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("8_s75n7")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="StarsBack" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("9_0dsg2")
+centered = false
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(29, 36)
