@@ -17,5 +17,5 @@ func _on_update(_delta: float) -> void:
 
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
-func _on_exit(args) -> void:
+func _on_exit(_args) -> void:
 	target.arrow.visible = true

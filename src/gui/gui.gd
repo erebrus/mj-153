@@ -12,6 +12,6 @@ func _ready() -> void:
 	fish_counter.text = str(fishes)
 	
 
-func _on_fish_captured(fish: Fish) -> void:
+func _on_fish_captured(_fish: Fish) -> void:
 	fishes += 1
 	fish_counter.text = str(fishes)

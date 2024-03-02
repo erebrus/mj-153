@@ -42,7 +42,7 @@ func _on_thrust_requested():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if angle_difference(rotation, target_angle) < PI/60:
 		rotation = target_angle
 	else:
@@ -103,3 +103,6 @@ func _input(event):
 
 func _on_timer_timeout():
 	Events.player_position_updated.emit(global_position)
+
+func add_air(air_bonus:float):
+	Logger.info("Added air %f" % air_bonus)

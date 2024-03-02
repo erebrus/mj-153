@@ -11,7 +11,7 @@ func _on_enter(_args) -> void:
 
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
-func _on_update(delta: float) -> void:
+func _on_update(_delta: float) -> void:
 	target.global_rotation = 0
 	arrow.global_rotation = target.global_position.angle_to_point(arrow.global_position)
 	move_captures()
@@ -19,7 +19,7 @@ func _on_update(delta: float) -> void:
 
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
-func _on_exit(args) -> void:
+func _on_exit(_args) -> void:
 	captured.clear()
 	
 
