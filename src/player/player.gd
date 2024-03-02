@@ -6,6 +6,13 @@ var impulse_force:float = 1000.0
 @export
 var shoot_impulse_force:float = 200.0
 
+@export 
+var breath_oxygen: int = 1
+
+@export
+var thrust_oxygen: int = 1
+
+
 var thrust_on:bool = false
 
 var target_angle:float
@@ -39,7 +46,6 @@ func _on_thrust_stopped():
 func _on_thrust_requested():
 	thrust_on = true
 	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
@@ -50,6 +56,7 @@ func _physics_process(_delta):
 	if thrust_on:
 		var impulse = Vector2.RIGHT.rotated(rotation)*-impulse_force
 		apply_force(impulse)
+		Events.oxygen_consumed.emit(thrust_oxygen)
 	
 	_rotate_sprite()
 	
@@ -106,3 +113,6 @@ func _on_timer_timeout():
 
 func add_air(air_bonus:float):
 	Logger.info("Added air %f" % air_bonus)
+
+func _on_oxygen_timer_timeout():
+	Events.oxygen_consumed.emit(breath_oxygen)
