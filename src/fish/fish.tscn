@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://mxame0kmrswl"]
+[gd_scene load_steps=13 format=3 uid="uid://dm45gdvvnrf7h"]
 
-[ext_resource type="Texture2D" uid="uid://wri20djcerpq" path="res://src/fish/fish1.png" id="1_v2h0i"]
+[ext_resource type="Texture2D" path="res://src/fish/fish1.png" id="1_v2h0i"]
 [ext_resource type="Script" path="res://src/fish/fish.gd" id="1_vq1q5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2h73t"]
@@ -71,16 +71,17 @@ animations = [{
 radius = 5.0
 height = 14.0
 
-[node name="Fish" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Fish" type="CharacterBody2D"]
 script = ExtResource("1_vq1q5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_7m4q2")
 autoplay = "default"
 frame_progress = 0.0863134
 
 [node name="HitBox" type="Area2D" parent="."]
+rotation = 1.5708
 collision_layer = 2
 collision_mask = 0
 
