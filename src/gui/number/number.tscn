@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba1ywvyd3wj7d"]
+
+[ext_resource type="Script" path="res://src/gui/number/number.gd" id="1_3vi7c"]
+[ext_resource type="Texture2D" uid="uid://qmaeh5qh5vbv" path="res://assets/gfx/ui/numbers.png" id="2_xg35t"]
+
+[node name="Number" type="HBoxContainer"]
+theme_override_constants/separation = 1
+script = ExtResource("1_3vi7c")
+texture = ExtResource("2_xg35t")
