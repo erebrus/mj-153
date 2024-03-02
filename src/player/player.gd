@@ -25,7 +25,7 @@ func _on_shoot_requested(pos:Vector2):
 	Logger.info("%s received shoot request pos %s" % [name, pos])
 	_shoot(pos)
 	var angle = pos.angle_to_point(global_position)
-	var impulse = Vector2.RIGHT.rotated(angle) * -shoot_impulse_force
+	var impulse = Vector2.LEFT.rotated(angle) * -shoot_impulse_force
 	apply_impulse(impulse)
 	
 func _shoot(pos):

@@ -14,6 +14,7 @@ func _on_enter(args) -> void:
 # XSM updates the root first, then the children
 func _on_update(delta: float) -> void:
 	var distance = arrow.position.length_squared()
+	var direction = arrow.position.normalized()
 	var movement = target.reel_speed * delta
 	
 	if (distance < pow(movement,2)):
@@ -24,6 +25,6 @@ func _on_update(delta: float) -> void:
 		change_state("Idle")
 		return
 	
-	arrow.position -= Vector2(movement, 0)
+	arrow.position -= movement * direction
 	
 	super._on_update(delta)
