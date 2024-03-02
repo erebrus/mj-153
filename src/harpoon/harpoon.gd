@@ -47,7 +47,7 @@ func _calculate_rope() -> Array[Vector2]:
 	var points:Array[Vector2] = [first_point]
 	var current = rope_step
 	while current < distance:
-		var point = Vector2(int(current), int(amplitude * sin(current * factor)))
+		var point = Vector2(current, amplitude * sin(current * factor))
 		points.append(point)
 		current += rope_step
 		
