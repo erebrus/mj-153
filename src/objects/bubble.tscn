@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://crrdapg3551uk"]
+[gd_scene load_steps=15 format=3 uid="uid://crrdapg3551uk"]
 
 [ext_resource type="Texture2D" uid="uid://cd1oh7la7fnq5" path="res://assets/gfx/objects/bubble.png" id="1_ktcbd"]
 [ext_resource type="Script" path="res://src/objects/bubble.gd" id="1_rfkhg"]
+[ext_resource type="AudioStream" uid="uid://bauv11oseyoxu" path="res://assets/sfx/oxygen_refill.wav" id="3_ghe8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57k85"]
 atlas = ExtResource("1_ktcbd")
@@ -79,7 +80,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2i6me"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_73oyr"]
 radius = 4.0
 
 [node name="Bubble" type="Area2D"]
@@ -87,10 +88,13 @@ collision_layer = 4
 script = ExtResource("1_rfkhg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_wyoyn")
+animation = &"pop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2i6me")
+shape = SubResource("CircleShape2D_73oyr")
+
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ghe8o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

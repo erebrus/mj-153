@@ -111,8 +111,5 @@ func _input(event):
 func _on_timer_timeout():
 	Events.player_position_updated.emit(global_position)
 
-func add_air(air_bonus:float):
-	Logger.info("Added air %f" % air_bonus)
-
 func _on_oxygen_timer_timeout():
 	Events.oxygen_consumed.emit(breath_oxygen)

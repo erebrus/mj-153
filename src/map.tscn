@@ -134,9 +134,6 @@ motion_mirroring = Vector2(640, 360)
 sprite_frames = SubResource("SpriteFrames_x5vp6")
 frame_progress = 0.792271
 
-[node name="Bubble" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("11_1dlpa")]
-position = Vector2(162.1, 118.9)
-
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(29, 36)
 polygon = PackedVector2Array(23, 3, 120, 3, 108, 42)
@@ -158,5 +155,8 @@ autostart = true
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Gui" parent="GUI" instance=ExtResource("3_rbmdb")]
+
+[node name="Bubble" parent="." instance=ExtResource("11_1dlpa")]
+position = Vector2(194.85, 123.15)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
