@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Player
 
 @export
 var impulse_force:float = 1000.0
@@ -113,3 +114,8 @@ func _on_timer_timeout():
 
 func _on_oxygen_timer_timeout():
 	Events.oxygen_consumed.emit(breath_oxygen)
+
+func crush():
+	Logger.info("player crushed.")
+	get_tree().reload_current_scene()
+	

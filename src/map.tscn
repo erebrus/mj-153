@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=27 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://ie5ryj4xpd7j" path="res://assets/gfx/bg/stars-mid.png" id="9_0dsg2"]
 [ext_resource type="Texture2D" uid="uid://cghyiyuo17mfb" path="res://assets/gfx/bg/stars-front-animated.png" id="10_8rs46"]
 [ext_resource type="PackedScene" uid="uid://crrdapg3551uk" path="res://src/objects/bubble.tscn" id="11_1dlpa"]
+[ext_resource type="PackedScene" uid="uid://bacj1hf8h1spr" path="res://src/objects/asteroid.tscn" id="14_61wql"]
+[ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="14_bttgh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2na5"]
 atlas = ExtResource("10_8rs46")
@@ -134,29 +136,33 @@ motion_mirroring = Vector2(640, 360)
 sprite_frames = SubResource("SpriteFrames_x5vp6")
 frame_progress = 0.792271
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2(29, 36)
-polygon = PackedVector2Array(23, 3, 120, 3, 108, 42)
-
-[node name="Player" parent="." instance=ExtResource("2_5jl7c")]
-position = Vector2(219, 115)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
-
-[node name="Fishes" type="Node2D" parent="."]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Gui" parent="GUI" instance=ExtResource("3_rbmdb")]
 
-[node name="Bubble" parent="." instance=ExtResource("11_1dlpa")]
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Bubble" parent="Objects" instance=ExtResource("11_1dlpa")]
 position = Vector2(194.85, 123.15)
+
+[node name="BlackHole" parent="Objects" instance=ExtResource("14_bttgh")]
+position = Vector2(267, 47)
+
+[node name="Asteroid" parent="Objects" instance=ExtResource("14_61wql")]
+position = Vector2(96.8501, 78.6501)
+
+[node name="Fishes" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_5jl7c")]
+position = Vector2(154, 79)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
