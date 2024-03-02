@@ -20,7 +20,6 @@ fish_scenes = Array[PackedScene]([ExtResource("2_ufj0h"), ExtResource("3_a6h2c")
 layer = -1
 
 [node name="BG" type="TextureRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,12 +30,15 @@ texture = ExtResource("7_v0qth")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 360)
 
 [node name="StarsBack" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("8_s75n7")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(640, 360)
 
 [node name="StarsBack" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("9_0dsg2")
