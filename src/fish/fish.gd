@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Fish
 
 const MAX_PLAYER_DISTANCE:=400.0
 
