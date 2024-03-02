@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=4 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
+[ext_resource type="PackedScene" uid="uid://bftr6q0o8u0sq" path="res://src/gui/gui.tscn" id="3_rbmdb"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_v8gei")
@@ -32,5 +33,9 @@ wait_time = 0.25
 autostart = true
 
 [node name="Fishes" type="Node2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Gui" parent="GUI" instance=ExtResource("3_rbmdb")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

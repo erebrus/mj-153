@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dllyym0lp6ejn"]
 
 [ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="1_lwf3o"]
-[ext_resource type="PackedScene" uid="uid://mxame0kmrswl" path="res://src/fish/fish.tscn" id="2_ag1h6"]
+[ext_resource type="PackedScene" uid="uid://dm45gdvvnrf7h" path="res://src/fish/fish.tscn" id="2_ag1h6"]
 
 [node name="HarpoonTest" type="Node2D"]
 
