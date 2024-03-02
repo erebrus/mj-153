@@ -1,12 +1,16 @@
 extends Node2D
 
-const FISH_SCENE=preload("res://src/fish/fish.tscn")
+const ASTEROID_SCENE=preload("res://src/objects/asteroid.tscn")
 @export
 var fish_scenes:Array[PackedScene] 
 @export 
 var window_size:=Vector2(320,180)
 @export
 var min_fish_count:=5
+@export
+var asteroid_period:Vector2 = Vector2(1,5)
+@export 
+var asteroid_distance := Vector2(320,500)
 
 var last_position:Vector2 
 var init_done := false
@@ -21,13 +25,26 @@ func _ready():
 	Events.oxygen_out.connect(func(): get_tree().reload_current_scene())
 
 	($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
-
 	
+
+func _schedule_asteroid():
+	_spawn_asteroid()
+	
+func _spawn_asteroid():
+	var asteroid = ASTEROID_SCENE.instantiate()
+	
+	var angle = 2*PI*randf()
+	#asteroid.direction = Vector2.RIGHT.rotated(angle-PI)
+	var dist = randf()*(asteroid_distance.y - asteroid_distance.x)+asteroid_distance.x
+	$Objects.add_child(asteroid)	
+	asteroid.global_position = last_position+ Vector2.RIGHT.rotated(angle)*dist
+	Logger.info("last pos %s asteroid %s (dist %2f angle %2f)" % [last_position, asteroid.global_position, dist, rad_to_deg(angle)])
 	
 func _on_player_position_updated(pos:Vector2):
 	last_position = pos
 	if not init_done:			
 		init_done=true
+		#_schedule_asteroid()
 
 func _select_fish_scene()->PackedScene:	
 	return fish_scenes[randi()%fish_scenes.size()]
