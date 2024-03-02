@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8t4eym2lviwc"]
+
+[ext_resource type="PackedScene" uid="uid://dm45gdvvnrf7h" path="res://src/fish/fish.tscn" id="1_k2aw0"]
+[ext_resource type="Texture2D" uid="uid://dftf53i1kw5em" path="res://assets/gfx/fishes/shell.png" id="2_ei2t5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh7um"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uowya"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar7an"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alks5"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfqbk"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmjid"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3hme"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8b37"]
+atlas = ExtResource("2_ei2t5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4x7p6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh7um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uowya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar7an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alks5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfqbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmjid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3hme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8b37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Shell" instance=ExtResource("1_k2aw0")]
+speed = 20.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_4x7p6")
+frame = 7
+frame_progress = 0.971494

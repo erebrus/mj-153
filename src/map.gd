@@ -1,6 +1,8 @@
 extends Node2D
 
 const FISH_SCENE=preload("res://src/fish/fish.tscn")
+@export
+var fish_scenes:Array[PackedScene] 
 @export 
 var window_size:=Vector2(320,180)
 @export
@@ -23,12 +25,15 @@ func _on_player_position_updated(pos:Vector2):
 	if not init_done:			
 		init_done=true
 
+func _select_fish_scene()->PackedScene:	
+	return fish_scenes[randi()%fish_scenes.size()]
+
 func _spawn_fish():
 	
 	var y:float = last_position.y + randf()*window_size.y-window_size.y/2 
 	var direction:int = 1 if randf()>.5 else -1
 	var x:float = last_position.x + window_size.x/2.0*(1.2 + randf()*.5)*direction
-	var f = FISH_SCENE.instantiate()
+	var f = _select_fish_scene().instantiate()
 	fishes.add_child(f)	
 	f.global_position=Vector2(x,y)
 	f.rotation = -PI if direction == 1 else 0

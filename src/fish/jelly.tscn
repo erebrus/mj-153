@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccd5bop2rwmut"]
+
+[ext_resource type="PackedScene" uid="uid://dm45gdvvnrf7h" path="res://src/fish/fish.tscn" id="1_s1b5a"]
+[ext_resource type="Texture2D" uid="uid://c8j1yq7uanoe4" path="res://assets/gfx/fishes/jelly.png" id="2_u8iyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg4q1"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oatlv"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef581"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upw7o"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r00gb"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2l6k"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3wcv"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04bj3"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fohd6"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu7l6"]
+atlas = ExtResource("2_u8iyn")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rehmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oatlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef581")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upw7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2l6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3wcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04bj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fohd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu7l6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Jelly" instance=ExtResource("1_s1b5a")]
+speed = 40.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_rehmg")
+frame_progress = 0.0

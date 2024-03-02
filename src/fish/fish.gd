@@ -3,8 +3,7 @@ class_name Fish
 
 const MAX_PLAYER_DISTANCE:=400.0
 
-@export
-var speed:=30.0
+@export var speed:=30.0
 
 @onready var sprite = $Sprite
 

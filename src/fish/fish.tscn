@@ -1,70 +1,63 @@
-[gd_scene load_steps=13 format=3 uid="uid://dm45gdvvnrf7h"]
+[gd_scene load_steps=12 format=3 uid="uid://dm45gdvvnrf7h"]
 
-[ext_resource type="Texture2D" uid="uid://wri20djcerpq" path="res://src/fish/fish1.png" id="1_v2h0i"]
 [ext_resource type="Script" path="res://src/fish/fish.gd" id="1_vq1q5"]
+[ext_resource type="Texture2D" uid="uid://dmpgxntujd1u3" path="res://assets/gfx/fishes/fish.png" id="2_8pchg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2h73t"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p23d7"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3nep"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1crdc"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hond"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6c1r"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5rl0"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7kw8"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7njdy"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqvn5"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7bp5"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_88iqt"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wdeoc"]
-atlas = ExtResource("1_v2h0i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkg7p"]
+atlas = ExtResource("2_8pchg")
 region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7me5j"]
-atlas = ExtResource("1_v2h0i")
-region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7m4q2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2h73t")
+"texture": SubResource("AtlasTexture_p23d7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3nep")
+"texture": SubResource("AtlasTexture_1crdc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4hond")
+"texture": SubResource("AtlasTexture_i6c1r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5rl0")
+"texture": SubResource("AtlasTexture_q7kw8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7njdy")
+"texture": SubResource("AtlasTexture_qqvn5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v7bp5")
+"texture": SubResource("AtlasTexture_88iqt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wdeoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7me5j")
+"texture": SubResource("AtlasTexture_nkg7p")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m80h3"]
@@ -73,7 +66,6 @@ height = 14.0
 
 [node name="Fish" type="CharacterBody2D"]
 script = ExtResource("1_vq1q5")
-speed = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708

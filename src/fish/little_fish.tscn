@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1oi61f76o55i"]
+
+[ext_resource type="PackedScene" uid="uid://dm45gdvvnrf7h" path="res://src/fish/fish.tscn" id="1_6fwsu"]
+[ext_resource type="Texture2D" uid="uid://dhpjwghxbynu1" path="res://assets/gfx/fishes/lil_fish.png" id="2_fbl4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh4bc"]
+atlas = ExtResource("2_fbl4c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db6t6"]
+atlas = ExtResource("2_fbl4c")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awop0"]
+atlas = ExtResource("2_fbl4c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lt3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh4bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db6t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awop0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="LittleFish" instance=ExtResource("1_6fwsu")]
+speed = 10.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_4lt3a")
+frame_progress = 0.0
