@@ -18,7 +18,7 @@ var init_done := false
 func _ready():
 	randomize()
 	Events.player_position_updated.connect(_on_player_position_updated)
-	
+	($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
 	
 func _on_player_position_updated(pos:Vector2):
 	last_position = pos
