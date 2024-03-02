@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bftr6q0o8u0sq"]
+[gd_scene load_steps=3 format=3 uid="uid://bftr6q0o8u0sq"]
 
 [ext_resource type="Script" path="res://src/gui/gui.gd" id="1_rbo4b"]
+[ext_resource type="PackedScene" uid="uid://lgw4l3mbudl5" path="res://src/gui/oxygen/oxygen.tscn" id="2_m5oia"]
 
 [node name="Gui" type="Control"]
 layout_mode = 3
@@ -13,9 +14,14 @@ script = ExtResource("1_rbo4b")
 
 [node name="FishCounter" type="Label" parent="."]
 layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Oxygen" parent="." instance=ExtResource("2_m5oia")]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -112.0
+offset_bottom = 16.0
 grow_horizontal = 0

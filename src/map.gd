@@ -18,6 +18,7 @@ var init_done := false
 func _ready():
 	randomize()
 	Events.player_position_updated.connect(_on_player_position_updated)
+	Events.oxygen_out.connect(func(): get_tree().reload_current_scene())
 	
 	
 func _on_player_position_updated(pos:Vector2):
