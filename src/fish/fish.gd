@@ -24,7 +24,7 @@ func _on_player_position_updated(pos:Vector2):
 		Logger.info("%s destroyed " % name)
 		queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 
 	velocity = Vector2.RIGHT.rotated(rotation) * speed
 
@@ -42,12 +42,12 @@ func capture() -> void:
 	queue_free()
 
 
-func _on_detection_box_body_entered(body):
+func _on_detection_box_body_entered(_body):
 	Logger.info("%s detected player")
 	reaction_timer.start()
 
 
-func _on_detection_box_body_exited(body):
+func _on_detection_box_body_exited(_body):
 	reaction_timer.stop()
 
 func _on_reaction_timer_timeout():

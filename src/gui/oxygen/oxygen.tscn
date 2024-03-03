@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://lgw4l3mbudl5"]
+
+[ext_resource type="Texture2D" uid="uid://dw85hdov0eja" path="res://assets/gfx/ui/oxygen-bar-back.png" id="1_h3uyr"]
+[ext_resource type="Texture2D" uid="uid://r3wlpxeqq8ny" path="res://assets/gfx/ui/oxygenbar.png" id="2_4y1t4"]
+[ext_resource type="Texture2D" uid="uid://owvo4h38026r" path="res://assets/gfx/ui/oxygen-bar-fill.png" id="3_vnpga"]
+[ext_resource type="Script" path="res://src/gui/oxygen/oxygen.gd" id="4_nvn2g"]
+[ext_resource type="AudioStream" uid="uid://docmhwoq8wb8n" path="res://assets/sfx/oxygen_alarm_1.wav" id="5_e6tv7"]
+
+[node name="Oxygen" type="TextureProgressBar"]
+texture_under = ExtResource("1_h3uyr")
+texture_over = ExtResource("2_4y1t4")
+texture_progress = ExtResource("3_vnpga")
+texture_progress_offset = Vector2(16, 0)
+script = ExtResource("4_nvn2g")
+
+[node name="AlarmSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e6tv7")

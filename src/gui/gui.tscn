@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bftr6q0o8u0sq"]
+[gd_scene load_steps=5 format=3 uid="uid://bftr6q0o8u0sq"]
 
 [ext_resource type="Script" path="res://src/gui/gui.gd" id="1_rbo4b"]
+[ext_resource type="PackedScene" uid="uid://lgw4l3mbudl5" path="res://src/gui/oxygen/oxygen.tscn" id="2_m5oia"]
+[ext_resource type="Texture2D" uid="uid://d07pborp873u" path="res://assets/gfx/ui/score.png" id="2_w6wgg"]
+[ext_resource type="PackedScene" uid="uid://ba1ywvyd3wj7d" path="res://src/gui/number/number.tscn" id="2_wf208"]
 
 [node name="Gui" type="Control"]
 layout_mode = 3
@@ -11,11 +14,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbo4b")
 
-[node name="FishCounter" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_w6wgg")
+
+[node name="FishCounter" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_wf208")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+padding = 2
+
+[node name="Oxygen" parent="." instance=ExtResource("2_m5oia")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -112.0
+offset_bottom = 16.0
 grow_horizontal = 0
