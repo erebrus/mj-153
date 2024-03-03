@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://het8aypaho4k"
-path="res://.godot/imported/cover_630x500.png-0bf1640cf24bf7cd398e3c9553030277.ctex"
+uid="uid://cjr7qwaaiqp8d"
+path="res://.godot/imported/CosmicPiscary1.png-fb38ac1073782a9da2cdec2a264c771a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/itchio/cover_630x500.png"
-dest_files=["res://.godot/imported/cover_630x500.png-0bf1640cf24bf7cd398e3c9553030277.ctex"]
+source_file="res://assets/gfx/itchio/CosmicPiscary1.png"
+dest_files=["res://.godot/imported/CosmicPiscary1.png-fb38ac1073782a9da2cdec2a264c771a.ctex"]
 
 [params]
 
