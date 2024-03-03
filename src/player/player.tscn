@@ -247,6 +247,8 @@ gravity_scale = 0.0
 script = ExtResource("1_lmvmc")
 impulse_force = 10000.0
 shoot_impulse_force = 1000.0
+breath_oxygen = 10
+thrust_oxygen = 2
 
 [node name="RotationGuide" type="Node2D" parent="."]
 visible = false
