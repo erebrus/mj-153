@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qdwvba2hm0uv"]
+[gd_scene load_steps=9 format=3 uid="uid://qdwvba2hm0uv"]
 
 [ext_resource type="Script" path="res://src/harpoon/harpoon.gd" id="1_6a5wj"]
 [ext_resource type="Texture2D" uid="uid://6q11af3awwof" path="res://src/harpoon/harpoon.png" id="2_xm335"]
@@ -6,14 +6,8 @@
 [ext_resource type="Script" path="res://src/harpoon/states/idle.gd" id="4_tsqr3"]
 [ext_resource type="Script" path="res://src/harpoon/states/shooting.gd" id="5_eoxbe"]
 [ext_resource type="Script" path="res://src/harpoon/states/reeling.gd" id="6_84dxg"]
-[ext_resource type="Script" path="res://addons/xsm/state_rand.gd" id="6_d682t"]
-[ext_resource type="Script" path="res://addons/xsm/state_sound.gd" id="7_3srdr"]
 [ext_resource type="AudioStream" uid="uid://dsaf2w3kwl537" path="res://assets/sfx/harpoon_throw_1.wav" id="8_jtbrd"]
-[ext_resource type="AudioStream" uid="uid://c762kchcwkb1f" path="res://assets/sfx/harpoon_throw_2.wav" id="9_784c1"]
-[ext_resource type="AudioStream" uid="uid://cvu1cnwdbdqkq" path="res://assets/sfx/harpoon_throw_3.wav" id="10_qea6m"]
 [ext_resource type="AudioStream" uid="uid://cembllv1yyqpy" path="res://assets/sfx/harpoon_back_1.wav" id="12_bicgr"]
-[ext_resource type="AudioStream" uid="uid://ddvv4btk48yn2" path="res://assets/sfx/harpoon_back_2.wav" id="13_hlhx0"]
-[ext_resource type="AudioStream" uid="uid://bgg05iw2u2ag4" path="res://assets/sfx/harpoon_back_3.wav" id="14_kyh30"]
 
 [node name="Harpoon" type="Node2D"]
 script = ExtResource("1_6a5wj")
@@ -52,6 +46,12 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jtbrd")
+
+[node name="ReelSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_bicgr")
+
 [node name="State" type="Node" parent="."]
 script = ExtResource("3_1okr1")
 history_size = 0
@@ -67,147 +67,5 @@ script = ExtResource("4_tsqr3")
 [node name="Shooting" type="Node" parent="State"]
 script = ExtResource("5_eoxbe")
 
-[node name="StateRand" type="Node" parent="State/Shooting"]
-script = ExtResource("6_d682t")
-randomized = true
-priorities = {
-"Throw1": 1,
-"Throw2": 1,
-"Throw3": 1
-}
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="Throw1" type="Node" parent="State/Shooting/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("8_jtbrd")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Throw2")
-
-[node name="Throw2" type="Node" parent="State/Shooting/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("9_784c1")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Throw3")
-
-[node name="Throw3" type="Node" parent="State/Shooting/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("10_qea6m")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
 [node name="Reeling" type="Node" parent="State"]
 script = ExtResource("6_84dxg")
-
-[node name="StateRand" type="Node" parent="State/Reeling"]
-script = ExtResource("6_d682t")
-randomized = true
-priorities = {
-"Reel1": 1,
-"Reel2": 1,
-"Reel3": 1
-}
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="Reel1" type="Node" parent="State/Reeling/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("12_bicgr")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Reel2")
-
-[node name="Reel2" type="Node" parent="State/Reeling/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("13_hlhx0")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Reel3")
-
-[node name="Reel3" type="Node" parent="State/Reeling/StateRand"]
-script = ExtResource("7_3srdr")
-sample = ExtResource("14_kyh30")
-sound_loop_mode = 0
-on_sounds_finished = 0
-volume_db = 0.0
-pitch_scale = 1.0
-pitch_randomness = 0.0
-max_polyphony = 5
-bus = "From Parent"
-positional = 0
-positional_mix_target = 0
-animation_player = NodePath("")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")

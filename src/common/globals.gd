@@ -2,7 +2,7 @@ extends Node
 
 
 const GAMEOVER = "res://src/game_over.tscn"
-const START = "res://src/map.tscn"
+const START = "res://src/start_screen.tscn"
 const MAP = "res://src/map.tscn"
 
 
@@ -41,6 +41,9 @@ func game_over() -> void:
 	Logger.info("game over")
 	alive = false
 	SceneManager.change_scene(GAMEOVER)
+	
+func _force_angle_precision(angle: float, precision: float) -> float:
+	return precision * round(angle / precision)
 	
 
 func _init_logger():

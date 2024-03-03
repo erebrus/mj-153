@@ -12,6 +12,7 @@ texture_over = ExtResource("2_4y1t4")
 texture_progress = ExtResource("3_vnpga")
 texture_progress_offset = Vector2(16, 0)
 script = ExtResource("4_nvn2g")
+max_oxygen = 2000
 
 [node name="AlarmSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_e6tv7")

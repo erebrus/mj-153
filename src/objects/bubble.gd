@@ -1,4 +1,4 @@
-extends Area2D
+class_name Bubble extends Area2D
 
 @export 
 var air:float=10

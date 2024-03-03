@@ -13,6 +13,8 @@ func _on_enter(args) -> void:
 	shooting_direction = target.global_position.direction_to(args)
 	target_position = target.global_position + target.rope_max_length * shooting_direction
 	Logger.debug("target position %s" % target_position)
+	target.shoot_sound.pitch_scale = randf_range(0.9, 1.1)
+	target.shoot_sound.play()
 	
 
 # This function is called each frame if the state is ACTIVE

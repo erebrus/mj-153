@@ -1,4 +1,4 @@
-extends Area2D
+class_name BlackHole extends Area2D
 
 @export
 var min_force:float=200

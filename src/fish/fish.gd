@@ -5,7 +5,7 @@ const MAX_PLAYER_DISTANCE:=400.0
 
 @export var speed:=30.0
 @export var runs_away := true
-
+@export var faces_running_direction := true
 
 @onready var sprite = $Sprite
 @onready var sound = $HitSound
@@ -25,9 +25,12 @@ func _on_player_position_updated(pos:Vector2):
 		queue_free()
 
 func _physics_process(_delta):
-
+	if faces_running_direction:
+		rotation = Globals._force_angle_precision(rotation, PI / 2)
+	else:
+		sprite.rotation = -rotation + Globals._force_angle_precision(rotation, PI / 2)
+	
 	velocity = Vector2.RIGHT.rotated(rotation) * speed
-
 	move_and_slide()
 
 func spear() -> void:

@@ -1,23 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=10 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
-[ext_resource type="PackedScene" uid="uid://dm45gdvvnrf7h" path="res://src/fish/fish.tscn" id="2_ufj0h"]
-[ext_resource type="PackedScene" uid="uid://crky5u4txgu38" path="res://src/fish/eel.tscn" id="3_a6h2c"]
 [ext_resource type="PackedScene" uid="uid://bftr6q0o8u0sq" path="res://src/gui/gui.tscn" id="3_rbmdb"]
-[ext_resource type="PackedScene" uid="uid://ccd5bop2rwmut" path="res://src/fish/jelly.tscn" id="4_l8o1u"]
-[ext_resource type="PackedScene" uid="uid://b8t4eym2lviwc" path="res://src/fish/shell.tscn" id="5_eiwmb"]
-[ext_resource type="PackedScene" uid="uid://b1oi61f76o55i" path="res://src/fish/little_fish.tscn" id="6_pti2r"]
 [ext_resource type="Texture2D" uid="uid://curqeyhkdg4fc" path="res://assets/gfx/bg/background-galaxy.png" id="7_v0qth"]
 [ext_resource type="Texture2D" uid="uid://dkd3j7qqv3pjl" path="res://assets/gfx/bg/stars-back.png" id="8_s75n7"]
 [ext_resource type="Texture2D" uid="uid://ie5ryj4xpd7j" path="res://assets/gfx/bg/stars-mid.png" id="9_0dsg2"]
 [ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="10_4hn5r"]
 [ext_resource type="PackedScene" uid="uid://crrdapg3551uk" path="res://src/objects/bubble.tscn" id="11_1dlpa"]
-[ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="14_bttgh"]
+[ext_resource type="PackedScene" uid="uid://b2ahy1np2viag" path="res://src/spawn/spawn_area.tscn" id="15_r2ysw"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_v8gei")
-fish_scenes = Array[PackedScene]([ExtResource("2_ufj0h"), ExtResource("3_a6h2c"), ExtResource("4_l8o1u"), ExtResource("5_eiwmb"), ExtResource("6_pti2r")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -102,11 +96,49 @@ autostart = true
 [node name="Bubble" parent="Objects" instance=ExtResource("11_1dlpa")]
 position = Vector2(194.85, 123.15)
 
-[node name="BlackHole" parent="Objects" instance=ExtResource("14_bttgh")]
-visible = false
-position = Vector2(267, 47)
-
 [node name="Fishes" type="Node2D" parent="."]
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="NW" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(-320, -180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="N" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(0, -180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="NE" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(320, -180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="W" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(-320, 0)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="E" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(320, 0)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="SW" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(-320, 180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="S" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(0, 180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
+
+[node name="SE" parent="Spawners" instance=ExtResource("15_r2ysw")]
+position = Vector2(320, 180)
+objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="Player" parent="." instance=ExtResource("2_5jl7c")]
 position = Vector2(154, 79)
