@@ -20,6 +20,8 @@ var target_angle:float
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite
+@onready var crush_sprite = $CrushSprite
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,6 +72,7 @@ func _rotate_sprite() -> void:
 	sprite.frame = frame_num * 2
 	
 	sprite.rotation = -rotation + discrete_rotation
+	crush_sprite.rotation = sprite.rotation + deg_to_rad(135)
 	$RotationGuide.rotation = -rotation
 	
 
@@ -117,5 +120,10 @@ func _on_oxygen_timer_timeout():
 
 func crush():
 	Logger.info("player crushed.")
-	get_tree().reload_current_scene()
+	sprite.visible = false
+	crush_sprite.visible = true
+	animation_player.play("crush")
+	sleeping=true
+	await animation_player.animation_finished	
+	Events.game_over.emit()
 	

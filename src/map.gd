@@ -22,11 +22,14 @@ var init_done := false
 func _ready():
 	randomize()
 	Events.player_position_updated.connect(_on_player_position_updated)
-	Events.oxygen_out.connect(func(): get_tree().reload_current_scene())
-
-	($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
+	Events.oxygen_out.connect(_on_game_over)
+	Events.game_over.connect(_on_game_over)
+	#($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
 	
-
+func _on_game_over():
+	Logger.info("game over")
+	get_tree().reload_current_scene()
+	
 func _schedule_asteroid():
 	_spawn_asteroid()
 	

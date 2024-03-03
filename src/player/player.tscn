@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=21 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
 [ext_resource type="Texture2D" uid="uid://2cqfs8fb6d6b" path="res://assets/gfx/character/character.png" id="2_x428q"]
 [ext_resource type="Texture2D" uid="uid://q8w2hmq8ha42" path="res://assets/gfx/character/thrust.png" id="3_1lcc6"]
+[ext_resource type="Texture2D" uid="uid://dod0rxy7k5tk0" path="res://assets/gfx/character/character-dissipate.png" id="3_wpxji"]
 [ext_resource type="AudioStream" uid="uid://0n2ww1v2rrpd" path="res://assets/sfx/trust_loop.wav" id="4_ch5g3"]
 [ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="4_snvsl"]
 [ext_resource type="AudioStream" uid="uid://cxa3ti8cdbych" path="res://assets/sfx/trust_start.wav" id="5_j0mh5"]
@@ -13,6 +14,35 @@ friction = 0.16
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smb2s"]
 radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckb87"]
+atlas = ExtResource("3_wpxji")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wpva"]
+atlas = ExtResource("3_wpxji")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_670ou"]
+atlas = ExtResource("3_wpxji")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2hhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckb87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wpva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_670ou")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_hccn5"]
 length = 0.001
@@ -171,9 +201,40 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
+[sub_resource type="Animation" id="Animation_4moy0"]
+resource_name = "crush"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrushSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrushSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 0.25),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c6ct"]
 _data = {
 "RESET": SubResource("Animation_hccn5"),
+"crush": SubResource("Animation_4moy0"),
 "thrust": SubResource("Animation_n4jjt"),
 "thrust_start": SubResource("Animation_mns11"),
 "thrust_stop": SubResource("Animation_0hv1i")
@@ -222,6 +283,16 @@ rotation = -1.5708
 texture = ExtResource("2_x428q")
 offset = Vector2(0, -4)
 hframes = 3
+
+[node name="CrushSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+rotation = 0.785398
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_r2hhe")
+offset = Vector2(-2, 3)
+flip_h = true
+flip_v = true
 
 [node name="ThrustSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
