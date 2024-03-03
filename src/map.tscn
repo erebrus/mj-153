@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=16 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
@@ -11,88 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://curqeyhkdg4fc" path="res://assets/gfx/bg/background-galaxy.png" id="7_v0qth"]
 [ext_resource type="Texture2D" uid="uid://dkd3j7qqv3pjl" path="res://assets/gfx/bg/stars-back.png" id="8_s75n7"]
 [ext_resource type="Texture2D" uid="uid://ie5ryj4xpd7j" path="res://assets/gfx/bg/stars-mid.png" id="9_0dsg2"]
-[ext_resource type="Texture2D" uid="uid://cghyiyuo17mfb" path="res://assets/gfx/bg/stars-front-animated.png" id="10_8rs46"]
+[ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="10_4hn5r"]
 [ext_resource type="PackedScene" uid="uid://crrdapg3551uk" path="res://src/objects/bubble.tscn" id="11_1dlpa"]
 [ext_resource type="PackedScene" uid="uid://bacj1hf8h1spr" path="res://src/objects/asteroid.tscn" id="14_61wql"]
 [ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="14_bttgh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b2na5"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(0, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8o15"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(640, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ln7w"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(1280, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3kyw3"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(1920, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a83xb"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(2560, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3t6m"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(3200, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ww4ii"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(3840, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn6kw"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(4480, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_chd0h"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(5120, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfdgf"]
-atlas = ExtResource("10_8rs46")
-region = Rect2(5760, 0, 640, 360)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x5vp6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b2na5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u8o15")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ln7w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3kyw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a83xb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3t6m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ww4ii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qn6kw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_chd0h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pfdgf")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_v8gei")
@@ -132,9 +54,44 @@ centered = false
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(640, 360)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-sprite_frames = SubResource("SpriteFrames_x5vp6")
-frame_progress = 0.792271
+[node name="BigStar" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(34, 105)
+
+[node name="BigStar2" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(156, 27)
+
+[node name="BigStar3" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(234, 131)
+
+[node name="BigStar4" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(16, 226)
+
+[node name="BigStar5" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(170, 204)
+
+[node name="BigStar6" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(346, 131)
+
+[node name="BigStar7" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(486, 44)
+
+[node name="BigStar8" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(541, 149)
+
+[node name="BigStar10" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(419, 221)
+
+[node name="BigStar11" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(534, 283)
+
+[node name="BigStar12" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(885, 325)
+
+[node name="BigStar13" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(380, 323)
+
+[node name="BigStar14" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource("10_4hn5r")]
+position = Vector2(242, 319)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.25
