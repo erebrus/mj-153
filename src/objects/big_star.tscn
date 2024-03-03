@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cd67r3krde8gp"]
 
-[ext_resource type="Texture2D" uid="uid://cfgjyt0854cg5" path="res://assets/gfx/bg/big_star.png" id="1_3se1e"]
+[ext_resource type="Texture2D" uid="uid://2m4rh8oemt8u" path="res://assets/gfx/bg/big_star.png" id="1_3se1e"]
 [ext_resource type="Script" path="res://src/objects/big_star.gd" id="2_k8v73"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dddi"]
@@ -54,4 +54,5 @@ sprite_frames = SubResource("SpriteFrames_rjfnp")
 frame = 5
 frame_progress = 1.0
 speed_scale = 1.5
+offset = Vector2(0.5, 0)
 script = ExtResource("2_k8v73")

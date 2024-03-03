@@ -24,6 +24,8 @@ func _physics_process(_delta):
 		var dist = target.global_position.distance_to(global_position)
 		if dist < crush_distance:
 			target.crush()
+			if target is Player:
+				monitoring = false
 			
 func _compute_force(_target):
 	var radius = collision_shape_2d.shape.radius

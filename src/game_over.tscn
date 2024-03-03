@@ -1,0 +1,322 @@
+[gd_scene load_steps=40 format=3 uid="uid://8u5pho5oybcj"]
+
+[ext_resource type="Script" path="res://src/game_over.gd" id="1_8hv2s"]
+[ext_resource type="Texture2D" uid="uid://curqeyhkdg4fc" path="res://assets/gfx/bg/background-galaxy.png" id="1_vwp64"]
+[ext_resource type="Texture2D" uid="uid://d07pborp873u" path="res://assets/gfx/ui/score.png" id="1_yrd7p"]
+[ext_resource type="PackedScene" uid="uid://ba1ywvyd3wj7d" path="res://src/gui/number/number.tscn" id="2_6pdom"]
+[ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="2_m6xfv"]
+[ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="3_gcjly"]
+[ext_resource type="Texture2D" uid="uid://blpjfv6if8qt2" path="res://assets/gfx/ui/gameover.png" id="4_xskld"]
+[ext_resource type="Texture2D" uid="uid://bq7agg1r4xgkk" path="res://assets/gfx/ui/menu-box.png" id="5_eo6sd"]
+[ext_resource type="Texture2D" uid="uid://cf8fki21j4e56" path="res://assets/gfx/objects/asteroid1.png" id="8_6qeev"]
+[ext_resource type="Texture2D" uid="uid://dftf53i1kw5em" path="res://assets/gfx/fishes/shell.png" id="8_rlybr"]
+[ext_resource type="Texture2D" uid="uid://bhhashxttenhx" path="res://assets/gfx/objects/asteroid2.png" id="9_3wsb8"]
+[ext_resource type="Texture2D" uid="uid://c8j1yq7uanoe4" path="res://assets/gfx/fishes/jelly.png" id="9_uijuf"]
+[ext_resource type="Texture2D" uid="uid://cu3s66f4m83by" path="res://assets/gfx/objects/asteroid3.png" id="10_roux3"]
+
+[sub_resource type="Curve2D" id="Curve2D_2h5xs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -20, 114, 0, 0, 0, 0, 107, 192)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_oduyx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 150, 224, 0, 0, 0, 0, -20, 80)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_x5nod"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -19, 41, 0, 0, 0, 0, 219, 240)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vdku6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 316, 222, 0, 0, 0, 0, 25, -20)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jjyd"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7qgf"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuykl"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gw41"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xxe0"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wuxt"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hde2r"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycyqc"]
+atlas = ExtResource("8_rlybr")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_orq7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jjyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7qgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuykl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gw41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xxe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wuxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hde2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycyqc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_bk1kb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 94, -44, 0, 0, 0, 0, 83, 212)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxuko"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grmbu"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvl52"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7s5l"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0jyj"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2hjq"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrjvs"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3pnb"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unrc3"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qww3r"]
+atlas = ExtResource("9_uijuf")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hamac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxuko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grmbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvl52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7s5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0jyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2hjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrjvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3pnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unrc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qww3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4s4o"]
+texture = ExtResource("5_eo6sd")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_8hv2s")
+asteroid_speed = 0.04
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_vwp64")
+
+[node name="BlackHole" parent="." instance=ExtResource("2_m6xfv")]
+position = Vector2(260, 40)
+
+[node name="BigStar" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(43, 38)
+
+[node name="BigStar2" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(96, 119)
+
+[node name="BigStar3" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(283, 160)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2h5xs")
+
+[node name="Asteroid" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(5.39077, 129.594)
+progress = 29.8081
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D/Asteroid"]
+texture = ExtResource("8_6qeev")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oduyx")
+
+[node name="Asteroid2" type="PathFollow2D" parent="Path2D2"]
+unique_name_in_owner = true
+position = Vector2(150, 224)
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D2/Asteroid2"]
+texture = ExtResource("9_3wsb8")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_x5nod")
+
+[node name="Asteroid3" type="PathFollow2D" parent="Path2D3"]
+unique_name_in_owner = true
+position = Vector2(100.691, 141.077)
+progress = 156.017
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D3/Asteroid3"]
+texture = ExtResource("10_roux3")
+
+[node name="Path2D4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vdku6")
+
+[node name="Asteroid4" type="PathFollow2D" parent="Path2D4"]
+unique_name_in_owner = true
+position = Vector2(287.956, 198.678)
+progress = 36.4852
+rotates = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D4/Asteroid4"]
+sprite_frames = SubResource("SpriteFrames_orq7o")
+autoplay = "default"
+
+[node name="Path2D5" type="Path2D" parent="."]
+curve = SubResource("Curve2D_bk1kb")
+
+[node name="Asteroid5" type="PathFollow2D" parent="Path2D5"]
+unique_name_in_owner = true
+position = Vector2(92.4344, -7.56386)
+progress = 36.4852
+rotates = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D5/Asteroid5"]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_hamac")
+autoplay = "default"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -38.5
+offset_right = 58.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p4s4o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GameOver" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_xskld")
+expand_mode = 5
+
+[node name="Score" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Score"]
+layout_mode = 2
+texture = ExtResource("1_yrd7p")
+
+[node name="FishCounter" parent="PanelContainer/VBoxContainer/Score" instance=ExtResource("2_6pdom")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+padding = 2
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]
