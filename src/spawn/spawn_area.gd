@@ -3,6 +3,13 @@ extends Area2D
 const ASTEROID_SCENE=preload("res://src/objects/asteroid.tscn")
 const BLACK_HOLE_SCENE=preload("res://src/objects/black_hole.tscn")
 
+const FISH_SCENES = [
+	preload("res://src/fish/fish.tscn"),
+	preload("res://src/fish/eel.tscn"),
+	preload("res://src/fish/little_fish.tscn"),
+	preload("res://src/fish/jelly.tscn"),
+	preload("res://src/fish/shell.tscn")
+]
 
 enum Type {
 	Asteroid,
@@ -26,6 +33,7 @@ enum Type {
 @export var size: Vector2 = Vector2(320, 180)
 
 @export var objects_path: NodePath
+@export var fish_path: NodePath
 
 
 @onready var configs: Dictionary = {
@@ -36,7 +44,14 @@ enum Type {
 }
 
 @onready var objects: Node2D = get_node(objects_path)
+@onready var fishes: Node2D = get_node(fish_path)
 
+func _ready():
+	if objects == null:
+		objects = self
+	if fishes == null:
+		fishes = self
+	
 
 func spawn() -> void:
 	var items = count_items()
@@ -50,13 +65,15 @@ func spawn_item(type: Type) -> void:
 	match(type):
 		Type.Asteroid:
 			spawn_asteroid()
+		Type.Fish:
+			spawn_fish()
 		
 	
 
 func spawn_asteroid() -> void:
 	var asteroid = ASTEROID_SCENE.instantiate()
 	asteroid.global_position = global_position + random_position()
-	asteroid.rotation = randi_range(0, 3) * PI / 2
+	asteroid.rotation = random_angle()
 	asteroid.direction = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 	
 	objects.add_child(asteroid)
@@ -64,8 +81,21 @@ func spawn_asteroid() -> void:
 	Logger.debug("Spawned asteroid at %s" % asteroid.global_position)
 	
 
+func spawn_fish() -> void:
+	var fish = FISH_SCENES[randi()%FISH_SCENES.size()].instantiate()
+	fish.global_position = global_position + random_position()
+	fish.rotation = random_angle()
+	
+	fishes.add_child(fish)
+	Logger.debug("Spawned fish at %s" % fish.global_position)
+	
+
 func random_position() -> Vector2:
 	return Vector2(randi_range(0, size.x), randi_range(0, size.y))
+	
+
+func random_angle() -> float:
+	return randi_range(0, 3) * PI / 2
 	
 
 func count_items() -> Dictionary:
@@ -81,6 +111,8 @@ func count_items() -> Dictionary:
 			count[Type.BlackHole] += 1
 		elif item is Bubble:
 			count[Type.Bubble] += 1
+		elif item.owner is Fish:
+			count[Type.Fish] += 1
 		else:
 			Logger.warn("Unknown area in spawner")
 			 

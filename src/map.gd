@@ -36,6 +36,8 @@ func _ready():
 
 func _physics_process(_delta):
 	$Spawners.global_position = $Player/Camera2D.global_position - Vector2(160, 90)
+	
+
 func _spawn_black_holes():
 	var black_holes:Array = []
 	for i in range(black_hole_count):
@@ -99,4 +101,5 @@ func _spawn_fish():
 
 func _on_spawn_timer_timeout():
 	if fishes.get_child_count()<min_fish_count:
-		_spawn_fish()
+		#_spawn_fish()
+		pass

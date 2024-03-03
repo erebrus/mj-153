@@ -114,34 +114,42 @@ position = Vector2(267, 47)
 [node name="NW" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(-320, -180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="N" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(0, -180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="NE" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(320, -180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="W" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(-320, 0)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="E" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(320, 0)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="SW" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(-320, 180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="S" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(0, 180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="SE" parent="Spawners" instance=ExtResource("15_r2ysw")]
 position = Vector2(320, 180)
 objects_path = NodePath("../../Objects")
+fish_path = NodePath("../../Fishes")
 
 [node name="Player" parent="." instance=ExtResource("2_5jl7c")]
 position = Vector2(154, 79)
