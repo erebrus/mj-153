@@ -115,7 +115,9 @@ func spawn_fish() -> void:
 	
 
 func random_position() -> Vector2:
-	return Vector2(randi_range(0, size.x), randi_range(0, size.y))
+	var inner_size = size * 0.8
+	var offset = (size - inner_size) / 2
+	return offset + Vector2(randi_range(0, inner_size.x), randi_range(0, inner_size.y))
 	
 
 func random_angle() -> float:
