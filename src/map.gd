@@ -40,6 +40,7 @@ func _spawn_asteroid():
 	asteroid.global_position = last_position+ Vector2.RIGHT.rotated(angle)*dist
 	Logger.info("last pos %s asteroid %s (dist %2f angle %2f)" % [last_position, asteroid.global_position, dist, rad_to_deg(angle)])
 	
+
 func _on_player_position_updated(pos:Vector2):
 	last_position = pos
 	if not init_done:			
