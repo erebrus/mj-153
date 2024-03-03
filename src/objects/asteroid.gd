@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Asteroid extends CharacterBody2D
 
 const TEXTURES:Array[Texture]=[
 	preload("res://assets/gfx/objects/asteroid1.png"),
@@ -21,6 +21,12 @@ func _ready():
 
 	Events.player_position_updated.connect(_on_player_position_updated)
 	
+
+func setup(flip_h: bool, flip_v: bool) -> void:
+	sprite.flip_h = flip_h
+	sprite.flip_v = flip_v
+	
+
 func _on_player_position_updated(pos:Vector2):
 	last_player_position = pos	
 		
