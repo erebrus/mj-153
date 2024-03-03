@@ -316,4 +316,8 @@ rotation = 3.14159
 
 [node name="ThrustSound" type="AudioStreamPlayer2D" parent="."]
 
+[node name="OxygenTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]
