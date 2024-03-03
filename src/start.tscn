@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ug2tjycca8d1"]
+[gd_scene load_steps=15 format=3 uid="uid://ug2tjycca8d1"]
 
 [ext_resource type="Script" path="res://src/start_screen.gd" id="1_14msn"]
 [ext_resource type="Texture2D" uid="uid://desepi6246owm" path="res://assets/gfx/ui/main-screen-background.png" id="1_mmbo7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bq7agg1r4xgkk" path="res://assets/gfx/ui/menu-box.png" id="9_aojpm"]
 [ext_resource type="Texture2D" uid="uid://b28pvjk0w4w5y" path="res://assets/gfx/ui/logo5.png" id="9_o2c71"]
 [ext_resource type="Texture2D" uid="uid://e72j7j2s61h4" path="res://assets/gfx/ui/click-to-play-highlight.png" id="11_df8h7"]
+[ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="13_6vgri"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ucf71"]
 frames = 6
@@ -89,5 +90,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("3_kjll1")
 texture_pressed = ExtResource("11_df8h7")
+
+[node name="BigStar" parent="." instance=ExtResource("13_6vgri")]
+position = Vector2(72, 77)
+
+[node name="BigStar2" parent="." instance=ExtResource("13_6vgri")]
+position = Vector2(260, 46)
+
+[node name="BigStar3" parent="." instance=ExtResource("13_6vgri")]
+position = Vector2(227, 139)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBg/StartButton" to="." method="_on_start_button_pressed"]
