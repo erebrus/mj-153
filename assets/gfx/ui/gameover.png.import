@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2m4rh8oemt8u"
-path="res://.godot/imported/big_star.png-9fd822769df40a3eea8a006693af9e3c.ctex"
+uid="uid://blpjfv6if8qt2"
+path="res://.godot/imported/gameover.png-4e7c22653faa10578ff75824b00f0630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/bg/big_star.png"
-dest_files=["res://.godot/imported/big_star.png-9fd822769df40a3eea8a006693af9e3c.ctex"]
+source_file="res://assets/gfx/ui/gameover.png"
+dest_files=["res://.godot/imported/gameover.png-4e7c22653faa10578ff75824b00f0630.ctex"]
 
 [params]
 

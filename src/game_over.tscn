@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://8u5pho5oybcj"]
+
+[ext_resource type="Script" path="res://src/game_over.gd" id="1_8hv2s"]
+[ext_resource type="Texture2D" uid="uid://curqeyhkdg4fc" path="res://assets/gfx/bg/background-galaxy.png" id="1_vwp64"]
+[ext_resource type="Texture2D" uid="uid://d07pborp873u" path="res://assets/gfx/ui/score.png" id="1_yrd7p"]
+[ext_resource type="PackedScene" uid="uid://ba1ywvyd3wj7d" path="res://src/gui/number/number.tscn" id="2_6pdom"]
+[ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="2_m6xfv"]
+[ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="3_gcjly"]
+[ext_resource type="Texture2D" uid="uid://blpjfv6if8qt2" path="res://assets/gfx/ui/gameover.png" id="4_xskld"]
+[ext_resource type="Texture2D" uid="uid://cf8fki21j4e56" path="res://assets/gfx/objects/asteroid1.png" id="8_6qeev"]
+[ext_resource type="Texture2D" uid="uid://bhhashxttenhx" path="res://assets/gfx/objects/asteroid2.png" id="9_3wsb8"]
+[ext_resource type="Texture2D" uid="uid://cu3s66f4m83by" path="res://assets/gfx/objects/asteroid3.png" id="10_roux3"]
+
+[sub_resource type="Curve2D" id="Curve2D_2h5xs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -20, 114, 0, 0, 0, 0, 107, 192)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_oduyx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 150, 224, 0, 0, 0, 0, -20, 80)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_x5nod"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -19, 41, 0, 0, 0, 0, 219, 240)
+}
+point_count = 2
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_8hv2s")
+asteroid_speed = 0.04
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_vwp64")
+
+[node name="BlackHole" parent="." instance=ExtResource("2_m6xfv")]
+position = Vector2(260, 40)
+
+[node name="BigStar" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(43, 38)
+
+[node name="BigStar2" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(96, 119)
+
+[node name="BigStar3" parent="." instance=ExtResource("3_gcjly")]
+position = Vector2(283, 160)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.5
+offset_right = 40.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="GameOver" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(80, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_xskld")
+expand_mode = 5
+
+[node name="Score" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Score"]
+layout_mode = 2
+texture = ExtResource("1_yrd7p")
+
+[node name="FishCounter" parent="VBoxContainer/Score" instance=ExtResource("2_6pdom")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+padding = 2
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2h5xs")
+
+[node name="Asteroid" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(5.39074, 129.594)
+progress = 29.8081
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D/Asteroid"]
+texture = ExtResource("8_6qeev")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oduyx")
+
+[node name="Asteroid2" type="PathFollow2D" parent="Path2D2"]
+unique_name_in_owner = true
+position = Vector2(150, 224)
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D2/Asteroid2"]
+texture = ExtResource("9_3wsb8")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_x5nod")
+
+[node name="Asteroid3" type="PathFollow2D" parent="Path2D3"]
+unique_name_in_owner = true
+position = Vector2(100.69, 141.077)
+progress = 156.017
+rotates = false
+
+[node name="Sprite" type="Sprite2D" parent="Path2D3/Asteroid3"]
+texture = ExtResource("10_roux3")
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]

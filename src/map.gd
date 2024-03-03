@@ -27,9 +27,9 @@ func _ready():
 	#($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
 	
 func _on_game_over():
-	Logger.info("game over")
-	get_tree().reload_current_scene()
+	Globals.game_over()
 	
+
 func _schedule_asteroid():
 	_spawn_asteroid()
 	
