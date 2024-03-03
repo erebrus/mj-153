@@ -106,6 +106,7 @@ autostart = true
 position = Vector2(194.85, 123.15)
 
 [node name="BlackHole" parent="Objects" instance=ExtResource("14_bttgh")]
+visible = false
 position = Vector2(267, 47)
 
 [node name="Fishes" type="Node2D" parent="."]

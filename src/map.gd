@@ -1,10 +1,17 @@
 extends Node2D
 
 const ASTEROID_SCENE=preload("res://src/objects/asteroid.tscn")
+const BLACK_HOLE_SCENE=preload("res://src/objects/black_hole.tscn")
+
 @export
 var fish_scenes:Array[PackedScene] 
 @export 
 var window_size:=Vector2(320,180)
+@export 
+var map_size:=Vector2(1600,900)
+@export
+var black_hole_count:= 10
+
 @export
 var min_fish_count:=5
 @export
@@ -25,7 +32,26 @@ func _ready():
 	Events.oxygen_out.connect(_on_game_over)
 	Events.game_over.connect(_on_game_over)
 	#($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
-	
+	_spawn_black_holes()
+
+func _spawn_black_holes():
+	var black_holes:Array = []
+	for i in range(black_hole_count):
+		for j in range(50):
+			var pos:Vector2 = Vector2(map_size.x*randf(),map_size.y*randf())-map_size/2.0
+			var valid=true
+			for o in black_holes:
+				if pos.distance_to(o)< 500:
+					valid=false
+					break
+			if not valid:
+				continue
+			black_holes.append(pos)
+	for p in black_holes:
+		var bo = BLACK_HOLE_SCENE.instantiate()
+		$Objects.add_child(bo)
+		bo.global_position=p
+		
 func _on_game_over():
 	Logger.info("game over")
 	get_tree().reload_current_scene()
