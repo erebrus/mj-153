@@ -36,9 +36,11 @@ func _compute_force(_target):
 	
 func _on_body_entered(body):
 	target=body
+	$sfx.play()
 
 
 func _on_body_exited(body):
 	target=null
+	$sfx.stop()
 
 

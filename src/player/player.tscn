@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=26 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
 [ext_resource type="Texture2D" uid="uid://2cqfs8fb6d6b" path="res://assets/gfx/character/character.png" id="2_x428q"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bnqacu1a0rnuy" path="res://assets/sfx/asteroid_hit_1.wav" id="9_3mcx3"]
 [ext_resource type="AudioStream" uid="uid://b0o6amo6mcr2u" path="res://assets/sfx/asteroid_hit_2.wav" id="10_an8h8"]
 [ext_resource type="AudioStream" uid="uid://fojk1vs8dckc" path="res://assets/sfx/asteroid_hit_3.wav" id="11_kfhyk"]
+[ext_resource type="AudioStream" uid="uid://db4ueenw6lfv5" path="res://assets/sfx/Death_outofoxygen.wav" id="12_yhj5r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spm34"]
 friction = 0.16
@@ -334,6 +335,9 @@ autostart = true
 
 [node name="CrushedSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_betj7")
+
+[node name="OutOfOxygenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_yhj5r")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]
