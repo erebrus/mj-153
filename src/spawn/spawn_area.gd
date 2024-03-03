@@ -2,6 +2,7 @@ extends Area2D
 
 const ASTEROID_SCENE=preload("res://src/objects/asteroid.tscn")
 const BLACK_HOLE_SCENE=preload("res://src/objects/black_hole.tscn")
+const BUBBLE_SCENE=preload("res://src/objects/bubble.tscn")
 
 const FISH_SCENES = [
 	preload("res://src/fish/fish.tscn"),
@@ -65,6 +66,10 @@ func spawn_item(type: Type) -> void:
 	match(type):
 		Type.Asteroid:
 			spawn_asteroid()
+		Type.BlackHole:
+			spawn_black_hole()
+		Type.Bubble:
+			spawn_bubble()
 		Type.Fish:
 			spawn_fish()
 		
@@ -81,6 +86,22 @@ func spawn_asteroid() -> void:
 	Logger.debug("Spawned asteroid at %s" % asteroid.global_position)
 	
 
+func spawn_black_hole() -> void:
+	var blackhole = BLACK_HOLE_SCENE.instantiate()
+	blackhole.global_position = global_position + random_position()
+	
+	objects.add_child(blackhole)
+	Logger.debug("Spawned black hole at %s" % blackhole.global_position)
+	
+
+func spawn_bubble() -> void:
+	var bubble = BUBBLE_SCENE.instantiate()
+	bubble.global_position = global_position + random_position()
+	
+	objects.add_child(bubble)
+	Logger.debug("Spawned bubble at %s" % bubble.global_position)
+	
+	
 func spawn_fish() -> void:
 	var fish = FISH_SCENES[randi()%FISH_SCENES.size()].instantiate()
 	fish.global_position = global_position + random_position()

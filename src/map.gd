@@ -31,7 +31,7 @@ func _ready():
 	Events.player_position_updated.connect(_on_player_position_updated)
 	Events.oxygen_out.connect(_on_game_over)
 	Events.game_over.connect(_on_game_over)
-	_spawn_black_holes()
+	#_spawn_black_holes()
 
 
 func _physics_process(_delta):
