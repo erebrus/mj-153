@@ -2,7 +2,7 @@ extends Node
 
 
 const GAMEOVER = "res://src/game_over.tscn"
-const START = "res://src/map.tscn"
+const START = "res://src/start_screen.tscn"
 const MAP = "res://src/map.tscn"
 
 

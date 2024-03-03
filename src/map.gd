@@ -11,7 +11,10 @@ var window_size:=Vector2(320,180)
 var map_size:=Vector2(1600,900)
 @export
 var black_hole_count:= 10
-
+@export
+var bubble_period:Vector2 = Vector2(1,5)
+#@export
+#var bubble_distance_factor:float = 
 @export
 var min_fish_count:=5
 @export
