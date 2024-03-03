@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bli4u42v2y85v"]
+[gd_scene load_steps=25 format=3 uid="uid://bli4u42v2y85v"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_lmvmc"]
 [ext_resource type="Texture2D" uid="uid://2cqfs8fb6d6b" path="res://assets/gfx/character/character.png" id="2_x428q"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://qdwvba2hm0uv" path="res://src/harpoon/harpoon.tscn" id="4_snvsl"]
 [ext_resource type="AudioStream" uid="uid://cxa3ti8cdbych" path="res://assets/sfx/trust_start.wav" id="5_j0mh5"]
 [ext_resource type="AudioStream" uid="uid://cty2047sk2eft" path="res://assets/sfx/trust_end.wav" id="6_squ50"]
+[ext_resource type="AudioStream" uid="uid://bnqacu1a0rnuy" path="res://assets/sfx/asteroid_hit_1.wav" id="9_3mcx3"]
+[ext_resource type="AudioStream" uid="uid://b0o6amo6mcr2u" path="res://assets/sfx/asteroid_hit_2.wav" id="10_an8h8"]
+[ext_resource type="AudioStream" uid="uid://fojk1vs8dckc" path="res://assets/sfx/asteroid_hit_3.wav" id="11_kfhyk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_spm34"]
 friction = 0.16
@@ -240,6 +243,15 @@ _data = {
 "thrust_stop": SubResource("Animation_0hv1i")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_betj7"]
+streams_count = 3
+stream_0/stream = ExtResource("9_3mcx3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_an8h8")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_kfhyk")
+stream_2/weight = 1.0
+
 [node name="Player" type="RigidBody2D"]
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_spm34")
@@ -317,6 +329,9 @@ rotation = 3.14159
 
 [node name="OxygenTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="CrushedSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_betj7")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]

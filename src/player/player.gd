@@ -22,6 +22,7 @@ var target_angle:float
 @onready var sprite = $Sprite
 @onready var crush_sprite = $CrushSprite
 
+@onready var crushed_sound = $CrushedSound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -124,6 +125,7 @@ func crush():
 	crush_sprite.visible = true
 	animation_player.play("crush")
 	sleeping=true
+	crushed_sound.play()
 	await animation_player.animation_finished	
 	Events.game_over.emit()
 	

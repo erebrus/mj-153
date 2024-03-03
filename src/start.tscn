@@ -1,18 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://ug2tjycca8d1"]
+[gd_scene load_steps=16 format=3 uid="uid://8rl6xry8avyl"]
 
 [ext_resource type="Script" path="res://src/start_screen.gd" id="1_14msn"]
-[ext_resource type="Texture2D" uid="uid://desepi6246owm" path="res://assets/gfx/ui/main-screen-background.png" id="1_mmbo7"]
-[ext_resource type="Texture2D" uid="uid://cn70kv863lsow" path="res://assets/gfx/ui/main-screen-border.png" id="2_e7evl"]
-[ext_resource type="Texture2D" uid="uid://dy6hvu3gcyca6" path="res://assets/gfx/ui/click-to-play.png" id="3_kjll1"]
-[ext_resource type="Texture2D" uid="uid://bn7uo1vcfl3c4" path="res://assets/gfx/ui/logo6.png" id="4_ewiwy"]
-[ext_resource type="Texture2D" uid="uid://cfnfe0tlkvbmd" path="res://assets/gfx/ui/logo1.png" id="5_00qfg"]
-[ext_resource type="Texture2D" uid="uid://b3vfrhj3pk3pr" path="res://assets/gfx/ui/logo2.png" id="6_qdte3"]
-[ext_resource type="Texture2D" uid="uid://df6pkyv85cape" path="res://assets/gfx/ui/logo3.png" id="7_rixsk"]
-[ext_resource type="Texture2D" uid="uid://c54lywu71qtpg" path="res://assets/gfx/ui/logo4.png" id="8_63gi5"]
+[ext_resource type="Texture2D" uid="uid://tm3mrvcu1qr" path="res://assets/gfx/ui/main-screen-background.png" id="1_mmbo7"]
+[ext_resource type="Texture2D" uid="uid://b2mua2jyfdawl" path="res://assets/gfx/ui/main-screen-border.png" id="2_e7evl"]
+[ext_resource type="Texture2D" uid="uid://b1ime2hvx61v1" path="res://assets/gfx/ui/click-to-play.png" id="3_kjll1"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo6.png" id="4_ewiwy"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo1.png" id="5_00qfg"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo2.png" id="6_qdte3"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo3.png" id="7_rixsk"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo4.png" id="8_63gi5"]
 [ext_resource type="Texture2D" uid="uid://bq7agg1r4xgkk" path="res://assets/gfx/ui/menu-box.png" id="9_aojpm"]
-[ext_resource type="Texture2D" uid="uid://b28pvjk0w4w5y" path="res://assets/gfx/ui/logo5.png" id="9_o2c71"]
-[ext_resource type="Texture2D" uid="uid://e72j7j2s61h4" path="res://assets/gfx/ui/click-to-play-highlight.png" id="11_df8h7"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/logo5.png" id="9_o2c71"]
+[ext_resource type="Texture2D" path="res://assets/gfx/ui/click-to-play-highlight.png" id="11_df8h7"]
 [ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="13_6vgri"]
+[ext_resource type="AudioStream" uid="uid://17rflpd5roc5" path="res://assets/sfx/UI_Click_1.wav" id="14_xwr5n"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ucf71"]
 frames = 6
@@ -99,5 +100,8 @@ position = Vector2(260, 46)
 
 [node name="BigStar3" parent="." instance=ExtResource("13_6vgri")]
 position = Vector2(227, 139)
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_xwr5n")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBg/StartButton" to="." method="_on_start_button_pressed"]
