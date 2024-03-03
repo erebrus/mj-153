@@ -18,6 +18,7 @@ var music
 
 
 var score: int = 0
+var alive: bool = true
 
 
 func _ready():
@@ -29,11 +30,16 @@ func _ready():
 func start() -> void:
 	Logger.info("start game")
 	score = 0
+	alive = true
 	SceneManager.change_scene(MAP)
 	
 
 func game_over() -> void:
+	if not alive:
+		return
+	
 	Logger.info("game over")
+	alive = false
 	SceneManager.change_scene(GAMEOVER)
 	
 

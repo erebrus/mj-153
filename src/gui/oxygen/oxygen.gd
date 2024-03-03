@@ -15,10 +15,12 @@ func _ready() -> void:
 	
 
 func start_alarm() -> void:
+	Logger.info("oxygen low")
 	alarm.play()
 	
 
 func stop_alarm() -> void:
+	Logger.info("oxygen recuperated")
 	alarm.stop()
 	
 
