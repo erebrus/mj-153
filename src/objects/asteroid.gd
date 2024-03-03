@@ -15,13 +15,14 @@ var direction:Vector2 = Vector2.UP
 
 func _ready():
 	sprite.texture = TEXTURES[randi() % TEXTURES.size()]
-	#velocity = randf()* \
-		#((speed_interval.y - speed_interval.x) +speed_interval.x )\
-		 #* direction
+	velocity = randf()* \
+		((speed_interval.y - speed_interval.x) +speed_interval.x )\
+		 * direction
 	
 func _physics_process(delta):
 	var col:KinematicCollision2D  = move_and_collide(velocity * delta)
 	if col and col.get_collider() is Player:
 		col.get_collider().crush()
+		collision_mask=0
 		
 	

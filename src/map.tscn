@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ndrbm68pe1c0"]
+[gd_scene load_steps=15 format=3 uid="uid://ndrbm68pe1c0"]
 
 [ext_resource type="Script" path="res://src/map.gd" id="1_v8gei"]
 [ext_resource type="PackedScene" uid="uid://bli4u42v2y85v" path="res://src/player/player.tscn" id="2_5jl7c"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ie5ryj4xpd7j" path="res://assets/gfx/bg/stars-mid.png" id="9_0dsg2"]
 [ext_resource type="PackedScene" uid="uid://cd67r3krde8gp" path="res://src/objects/big_star.tscn" id="10_4hn5r"]
 [ext_resource type="PackedScene" uid="uid://crrdapg3551uk" path="res://src/objects/bubble.tscn" id="11_1dlpa"]
-[ext_resource type="PackedScene" uid="uid://bacj1hf8h1spr" path="res://src/objects/asteroid.tscn" id="14_61wql"]
 [ext_resource type="PackedScene" uid="uid://sm5t6o6t21t2" path="res://src/objects/black_hole.tscn" id="14_bttgh"]
 
 [node name="Map" type="Node2D"]
@@ -108,9 +107,6 @@ position = Vector2(194.85, 123.15)
 
 [node name="BlackHole" parent="Objects" instance=ExtResource("14_bttgh")]
 position = Vector2(267, 47)
-
-[node name="Asteroid" parent="Objects" instance=ExtResource("14_61wql")]
-position = Vector2(96.8501, 78.6501)
 
 [node name="Fishes" type="Node2D" parent="."]
 
