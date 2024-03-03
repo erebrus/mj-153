@@ -1,17 +1,13 @@
 extends Control
 
 
-
-var fishes: int = 0
-
 @onready var fish_counter = %FishCounter
 
 
 func _ready() -> void:
-	Events.fish_captured.connect(_on_fish_captured)
-	fish_counter.number = fishes
+	Events.score_changed.connect(_on_score_changed)
+	fish_counter.number = Globals.score
 	
 
-func _on_fish_captured(_fish: Fish) -> void:
-	fishes += 1
-	fish_counter.number = fishes
+func _on_score_changed(score: int) -> void:
+	fish_counter.number = score

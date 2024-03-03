@@ -12,3 +12,4 @@ signal oxygen_restored(amount: int)
 signal oxygen_out
 
 signal game_over
+signal score_changed(score: int)
