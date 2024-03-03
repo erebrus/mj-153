@@ -55,9 +55,8 @@ jobs:
       - name: Mac Build
         run: |
           mkdir -v -p build/mac
-          cd src
-          godot -v --headless --export-release "MacOS" ../build/mac/$EXPORT_NAME.zip
-          godot -v --headless --export-release "MacOS" ../build/mac/$EXPORT_NAME.zip
+          godot -v --headless --export-release "MacOS" build/mac/$EXPORT_NAME.zip
+          godot -v --headless --export-release "MacOS" build/mac/$EXPORT_NAME.zip
       - name: Publish to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
@@ -83,9 +82,8 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          cd src
-          godot -v --headless --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
-          godot -v --headless --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot -v --headless --export-release "Windows Desktop" build/windows/$EXPORT_NAME.exe
+          godot -v --headless --export-release "Windows Desktop" build/windows/$EXPORT_NAME.exe
       - name: Publish to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
@@ -111,9 +109,8 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
-          cd src
-          godot -v --headless --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
-          godot -v --headless --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+          godot -v --headless --export-release "Linux/X11" build/linux/$EXPORT_NAME.x86_64
+          godot -v --headless --export-release "Linux/X11" build/linux/$EXPORT_NAME.x86_64
       - name: Publish to Itch.io
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
