@@ -53,9 +53,9 @@ func _spawn_black_holes():
 		bo.global_position=p
 		
 func _on_game_over():
-	Logger.info("game over")
-	get_tree().reload_current_scene()
+	Globals.game_over()
 	
+
 func _schedule_asteroid():
 	_spawn_asteroid()
 	
