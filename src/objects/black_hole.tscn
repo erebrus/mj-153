@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://sm5t6o6t21t2"]
+[gd_scene load_steps=10 format=3 uid="uid://sm5t6o6t21t2"]
 
 [ext_resource type="Script" path="res://src/objects/black_hole.gd" id="1_uegti"]
 [ext_resource type="Texture2D" uid="uid://cthfs1j3ok27s" path="res://assets/gfx/objects/black-hole.png" id="1_yt6cf"]
+[ext_resource type="AudioStream" uid="uid://50utdyqk1nna" path="res://assets/sfx/Blackhole_loop.wav" id="3_lye1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2xe0n"]
 atlas = ExtResource("1_yt6cf")
@@ -53,6 +54,11 @@ sprite_frames = SubResource("SpriteFrames_hua7h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_316tv")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lye1e")
+max_distance = 120.0
+attenuation = 0.615572
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -7,7 +7,7 @@ on:
 env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: mj153
-  ITCH_GAME: minijam-153
+  ITCH_GAME: cosmic-piscary
   ITCH_USER: erebrus
 
 jobs:

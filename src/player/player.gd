@@ -31,7 +31,14 @@ func _ready():
 	Events.thrust_stopped.connect(_on_thrust_stopped)
 	Events.shoot_requested.connect(_on_shoot_requested)
 	_on_timer_timeout()
+	Events.oxygen_out.connect(_on_out_of_oxygen)
 
+func _on_out_of_oxygen():
+	var sfx = $OutOfOxygenSound as AudioStreamPlayer2D
+	sfx.play()
+	await sfx.finished
+	Globals.game_over()
+	
 func _on_shoot_requested(pos:Vector2):
 	Logger.info("%s received shoot request pos %s" % [name, pos])
 	_shoot(pos)

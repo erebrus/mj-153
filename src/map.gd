@@ -4,7 +4,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	Events.oxygen_out.connect(_on_game_over)
 	Events.game_over.connect(_on_game_over)
 
 
