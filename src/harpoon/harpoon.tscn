@@ -52,6 +52,12 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jtbrd")
+
+[node name="ReelSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_bicgr")
+
 [node name="State" type="Node" parent="."]
 script = ExtResource("3_1okr1")
 history_size = 0
