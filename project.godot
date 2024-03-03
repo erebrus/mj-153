@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Logger="*res://addons/gs_logger/logger.gd"
 Events="*res://src/common/events.gd"
-Globals="*res://src/common/globals.gd"
+Globals="*res://src/common/globals.tscn"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 
 [display]

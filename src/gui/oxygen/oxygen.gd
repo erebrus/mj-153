@@ -25,10 +25,9 @@ func stop_alarm() -> void:
 	
 
 func _on_oxygen_consumed(delta: int) -> void:
-	var old_value = value
-	value = clampi(old_value - delta, 0, max_oxygen)
+	value = clampi(value - delta, 0, max_oxygen)
 	
-	if old_value > max_oxygen * alert_factor and value <= max_oxygen * alert_factor:
+	if not alarm.playing and value <= (max_oxygen * alert_factor):
 		start_alarm() 
 		
 	if value <= 0:
@@ -37,9 +36,8 @@ func _on_oxygen_consumed(delta: int) -> void:
 	
 
 func _on_oxygen_restored(delta: int) -> void:
-	var old_value = value
-	value = clampi(old_value + delta, 0, max_oxygen)
+	value = clampi(value + delta, 0, max_oxygen)
 	
-	if old_value < max_oxygen * alert_factor and value >= max_oxygen * alert_factor:
+	if alarm.playing and value >= (max_oxygen * alert_factor):
 		start_alarm() 
 	
