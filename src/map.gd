@@ -31,9 +31,11 @@ func _ready():
 	Events.player_position_updated.connect(_on_player_position_updated)
 	Events.oxygen_out.connect(_on_game_over)
 	Events.game_over.connect(_on_game_over)
-	#($ParallaxBackground/ParallaxLayer3/AnimatedSprite2D as AnimatedSprite2D).play("default")
 	_spawn_black_holes()
 
+
+func _physics_process(_delta):
+	$Spawners.global_position = $Player/Camera2D.global_position - Vector2(160, 90)
 func _spawn_black_holes():
 	var black_holes:Array = []
 	for i in range(black_hole_count):
@@ -57,7 +59,8 @@ func _on_game_over():
 	
 
 func _schedule_asteroid():
-	_spawn_asteroid()
+	#_spawn_asteroid()
+	pass
 	
 func _spawn_asteroid():
 	var asteroid = ASTEROID_SCENE.instantiate()
