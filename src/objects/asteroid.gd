@@ -1,12 +1,20 @@
 extends CharacterBody2D
 
+const TEXTURES:Array[Texture]=[
+	preload("res://assets/gfx/objects/asteroid1.png"),
+	preload("res://assets/gfx/objects/asteroid2.png"),
+	preload("res://assets/gfx/objects/asteroid3.png")
+	]
+
 @export
 var speed_interval:Vector2 = Vector2(20,80)
 var direction:Vector2 = Vector2.UP
 
+@onready var sprite = $Sprite2D
+
 
 func _ready():
-	pass
+	sprite.texture = TEXTURES[randi() % TEXTURES.size()]
 	#velocity = randf()* \
 		#((speed_interval.y - speed_interval.x) +speed_interval.x )\
 		 #* direction
