@@ -42,6 +42,9 @@ func game_over() -> void:
 	alive = false
 	SceneManager.change_scene(GAMEOVER)
 	
+func _force_angle_precision(angle: float, precision: float) -> float:
+	return precision * round(angle / precision)
+	
 
 func _init_logger():
 	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)

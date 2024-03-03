@@ -66,8 +66,8 @@ func _physics_process(_delta):
 	
 
 func _rotate_sprite() -> void:
-	var discrete_rotation = _force_angle_precision(rotation - PI / 4 - PI / 8, PI/2)
-	var discrete_rotation_half = _force_angle_precision(rotation - PI / 2, PI/4)
+	var discrete_rotation = Globals._force_angle_precision(rotation - PI / 4 - PI / 8, PI/2)
+	var discrete_rotation_half = Globals._force_angle_precision(rotation - PI / 2, PI/4)
 	
 	var frame_num = posmod(discrete_rotation_half / (PI / 4), 2)
 	sprite.frame = frame_num * 2
@@ -75,10 +75,6 @@ func _rotate_sprite() -> void:
 	sprite.rotation = -rotation + discrete_rotation
 	crush_sprite.rotation = sprite.rotation + deg_to_rad(135)
 	$RotationGuide.rotation = -rotation
-	
-
-func _force_angle_precision(angle: float, precision: float) -> float:
-	return precision * round(angle / precision)
 	
 
 func _set_target_angle():

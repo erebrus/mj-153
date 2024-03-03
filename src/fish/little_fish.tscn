@@ -34,6 +34,7 @@ animations = [{
 
 [node name="LittleFish" instance=ExtResource("1_6fwsu")]
 speed = 10.0
+faces_running_direction = false
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_4lt3a")
