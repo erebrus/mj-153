@@ -9,6 +9,8 @@ func _on_enter(args) -> void:
 	if args != null:
 		captured = args
 	
+	target.reel_sound.pitch_scale = randf_range(0.9, 1.1)
+	target.reel_sound.play()
 
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children

@@ -15,6 +15,9 @@ var rope_points: Array[Vector2]
 @onready var rope = $Rope
 @onready var state_machine = $State
 
+@onready var shoot_sound = $ShootSound
+@onready var reel_sound = $ReelSound
+
 
 func _draw() -> void:
 	if (rope.visible):
