@@ -69,6 +69,7 @@ animations = [{
 
 [node name="Shell" instance=ExtResource("1_k2aw0")]
 speed = 20.0
+faces_running_direction = false
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_4x7p6")

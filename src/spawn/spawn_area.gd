@@ -105,7 +105,10 @@ func spawn_bubble() -> void:
 func spawn_fish() -> void:
 	var fish = FISH_SCENES[randi()%FISH_SCENES.size()].instantiate()
 	fish.global_position = global_position + random_position()
-	fish.rotation = random_angle()
+	if fish.faces_running_direction:
+		fish.rotation = random_angle()
+	else:
+		fish.rotation = randf() * PI * 2
 	
 	fishes.add_child(fish)
 	Logger.debug("Spawned fish at %s" % fish.global_position)
